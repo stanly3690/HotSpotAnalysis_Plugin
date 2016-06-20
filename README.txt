@@ -1,33 +1,47 @@
-Plugin Builder Results
+HotSpot Analysis-plugin is a QGIS which is to perform Hotspot Analysis.
+The plugin generates a csv file which includes the  z-scores and p-values for the user mentioned x and y coordinates.
 
-Your plugin HotspotAnalysis was created in:
-    C:\Users\STANLY\.qgis2\python\plugins\HotspotAnalysis
+Requirements for installing packages:
 
-Your QGIS plugin directory is located at:
-    C:/Users/STANLY/.qgis2/python/plugins
+download get-pip.py : https://bootstrap.pypa.io/get-pip.py
 
-What's Next:
 
-  * Copy the entire directory containing your new plugin to the QGIS plugin
-    directory
+Open OSGeo4Shell ,Navigate to directory where get-pip.py file is stored and type : python get-pip.py
 
-  * Compile the resources file using pyrcc4
+Further Information  : https://packaging.python.org/en/latest/installing/#install-pip-setuptools-and-wheel
 
-  * Run the tests (``make test``)
 
-  * Test the plugin by enabling it in the QGIS plugin manager
+Pre-requisites: Packages need to be installed  
+python 2.7 or higher
+numpy: download version according to your configuration from https://pypi.anaconda.org/carlkl/simple/numpy/
+Open OSGeo4Shell, type as Administrator: pip install Directory/Numpyfilename
 
-  * Customize it by editing the implementation file: ``hotspot_analysis.py``
+Scipy : download version according to your configuration from https://pypi.anaconda.org/carlkl/simple/scipy/
+Open OSGeo4Shell as Administrator, type : pip install Directory/Scipyfilename
 
-  * Create your own custom icon, replacing the default icon.png
+pysal: 
+Open OSGeo4Shell as Administrator, type : pip install pysal
 
-  * Modify your user interface by opening HotspotAnalysis.ui in Qt Designer
+shapefile: 
+Open OSGeo4Shell as Administrator, type : pip install pypshp
 
-  * You can use the Makefile to compile your Ui and resource files when
-    you make changes. This requires GNU make (gmake)
+Installation
 
-For more information, see the PyQGIS Developer Cookbook at:
-http://www.qgis.org/pyqgis-cookbook/index.html
+Copy the folder into qgis python plugins folder :
+Default drive: C:\Users\<username>\.qgis2\python\plugins\
 
-(C) 2011-2014 GeoApt LLC - geoapt.com
-Git revision : $Format:%H$
+Open QGIS: Go to  Plugins -> Manage and Install plugins
+
+In settings tab , enable "show also experimental plugins"
+Check 'HotSpotAnalysis' in all plugins tab
+
+
+
+Bug tracker and Wiki
+
+
+License
+
+HotSpotAnalysis-plugin is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+Copyright © 2016 Stanly Shaji/ ArunKumar Muthusamy Politecnico Di Milano

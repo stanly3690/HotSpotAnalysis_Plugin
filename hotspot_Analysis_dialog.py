@@ -3,11 +3,11 @@
 /***************************************************************************
  HotspotAnalysisDialog
                                  A QGIS plugin
- Plugin to analyse the hotspot and coldspot
+ This plugin generates data needed for hotspot Analysis
                              -------------------
-        begin                : 2016-05-27
+        begin                : 2016-06-19
         git sha              : $Format:%H$
-        copyright            : (C) 2016 by Stanly_Arun / Politecnico Di Milano
+        copyright            : (C) 2016 by Stanly Shaji, Arunkumar / Politecnico Di Milano
         email                : stanly.shaji@mail.polimi.it
  ***************************************************************************/
 
@@ -26,7 +26,7 @@ import os
 from PyQt4 import QtGui, uic
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
-    os.path.dirname(__file__), 'hotspot_Analysis_dialog_base.ui'))
+    os.path.dirname(__file__), 'hotspot_analysis_dialog_base.ui'))
 
 
 class HotspotAnalysisDialog(QtGui.QDialog, FORM_CLASS):

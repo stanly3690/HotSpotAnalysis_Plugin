@@ -3,10 +3,10 @@
 /***************************************************************************
  HotspotAnalysis
                                  A QGIS plugin
- Plugin to analyse the hotspot and coldspot
+ This plugin generates data needed for hotspot Analysis
                              -------------------
-        begin                : 2016-05-27
-        copyright            : (C) 2016 by Stanly_Arun / Politecnico Di Milano
+        begin                : 2016-06-19
+        copyright            : (C) 2016 by Stanly Shaji, Arunkumar / Politecnico Di Milano
         email                : stanly.shaji@mail.polimi.it
         git sha              : $Format:%H$
  ***************************************************************************/
@@ -31,5 +31,5 @@ def classFactory(iface):  # pylint: disable=invalid-name
     :type iface: QgsInterface
     """
     #
-    from .hotspot_Analysis import HotspotAnalysis
+    from .hotspot_analysis import HotspotAnalysis
     return HotspotAnalysis(iface)

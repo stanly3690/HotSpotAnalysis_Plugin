@@ -9,8 +9,8 @@
 """
 
 __author__ = 'stanly.shaji@mail.polimi.it'
-__date__ = '2016-05-27'
-__copyright__ = 'Copyright 2016, Stanly_Arun / Politecnico Di Milano'
+__date__ = '2016-06-19'
+__copyright__ = 'Copyright 2016, Stanly Shaji, Arunkumar / Politecnico Di Milano'
 
 import unittest
 

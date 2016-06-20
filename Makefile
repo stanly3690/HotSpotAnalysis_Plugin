@@ -1,11 +1,11 @@
 #/***************************************************************************
 # HotspotAnalysis
 #
-# Plugin to analyse the hotspot and coldspot
+# This plugin generates data needed for hotspot Analysis
 #							 -------------------
-#		begin				: 2016-05-27
+#		begin				: 2016-06-19
 #		git sha				: $Format:%H$
-#		copyright			: (C) 2016 by Stanly_Arun / Politecnico Di Milano
+#		copyright			: (C) 2016 by Stanly Shaji, Arunkumar / Politecnico Di Milano
 #		email				: stanly.shaji@mail.polimi.it
 # ***************************************************************************/
 #
@@ -38,15 +38,15 @@ LOCALES =
 # translation
 SOURCES = \
 	__init__.py \
-	hotspot_Analysis.py hotspot_Analysis_dialog.py
+	hotspot_analysis.py hotspot_analysis_dialog.py
 
 PLUGINNAME = HotspotAnalysis
 
 PY_FILES = \
 	__init__.py \
-	hotspot_Analysis.py hotspot_Analysis_dialog.py
+	hotspot_analysis.py hotspot_analysis_dialog.py
 
-UI_FILES = hotspot_Analysis_dialog_base.ui
+UI_FILES = hotspot_analysis_dialog_base.ui
 
 EXTRAS = metadata.txt icon.png
 

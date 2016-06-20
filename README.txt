@@ -17,7 +17,7 @@ What's Next:
 
   * Test the plugin by enabling it in the QGIS plugin manager
 
-  * Customize it by editing the implementation file: ``hotspot_Analysis.py``
+  * Customize it by editing the implementation file: ``hotspot_analysis.py``
 
   * Create your own custom icon, replacing the default icon.png
 

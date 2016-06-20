@@ -9,15 +9,15 @@
 [general]
 name=Hotspot Analysis
 qgisMinimumVersion=2.0
-description=Plugin to analyse the hotspot and coldspot
+description=This plugin generates data needed for hotspot Analysis
 version=0.1
-author=Stanly_Arun / Politecnico Di Milano
+author=Stanly Shaji, Arunkumar / Politecnico Di Milano
 email=stanly.shaji@mail.polimi.it
 
-about=A qgis plugin to analyse a layer to find the hotspot and cold spot area
+about=Plugin generates data required for hotspot analysis from coordinates and point count values as input
 
 tracker=https://github.com/stanly3690/HotSpotAnalysis_Plugin/issues
-repository=https://github.com/stanly3690/HotSpotAnalysis_Plugin
+repository=https://github.com/stanly3690/HotSpotAnalysis_Plugin.git
 # End of mandatory metadata
 
 # Recommended items:
@@ -26,7 +26,7 @@ repository=https://github.com/stanly3690/HotSpotAnalysis_Plugin
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=
+tags=hotspotanalysis
 
 homepage=https://github.com/stanly3690
 category=Plugins

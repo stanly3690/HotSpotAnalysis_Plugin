@@ -9,14 +9,14 @@
 """
 
 __author__ = 'stanly.shaji@mail.polimi.it'
-__date__ = '2016-05-27'
-__copyright__ = 'Copyright 2016, Stanly_Arun / Politecnico Di Milano'
+__date__ = '2016-06-19'
+__copyright__ = 'Copyright 2016, Stanly Shaji, Arunkumar / Politecnico Di Milano'
 
 import unittest
 
 from PyQt4.QtGui import QDialogButtonBox, QDialog
 
-from hotspot_Analysis_dialog import HotspotAnalysisDialog
+from hotspot_analysis_dialog import HotspotAnalysisDialog
 
 from utilities import get_qgis_app
 QGIS_APP = get_qgis_app()

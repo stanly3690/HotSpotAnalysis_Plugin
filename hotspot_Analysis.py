@@ -3,11 +3,11 @@
 /***************************************************************************
  HotspotAnalysis
                                  A QGIS plugin
- Plugin to analyse the hotspot and coldspot
+ This plugin generates data needed for hotspot Analysis
                               -------------------
-        begin                : 2016-05-27
+        begin                : 2016-06-19
         git sha              : $Format:%H$
-        copyright            : (C) 2016 by Stanly_Arun / Politecnico Di Milano
+        copyright            : (C) 2016 by Stanly Shaji, Arunkumar / Politecnico Di Milano
         email                : stanly.shaji@mail.polimi.it
  ***************************************************************************/
 
@@ -21,11 +21,11 @@
  ***************************************************************************/
 """
 from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt4.QtGui import QAction, QIcon, QFileDialog, QComboBox, QFrame, QLineEdit
+from PyQt4.QtGui import QAction, QIcon, QFileDialog, QComboBox, QFrame, QLineEdit, QMessageBox
 # Initialize Qt resources from file resources.py
 import resources
 # Import the code for the dialog
-from hotspot_Analysis_dialog import HotspotAnalysisDialog
+from hotspot_analysis_dialog import HotspotAnalysisDialog
 import os.path
 
 import pysal
@@ -37,18 +37,11 @@ import shapefile
 import csv
 import os
 import collections
-minT = 0
-maxT = 0
-dist = 0
-fieldIndex_X = -1
-fieldIndex_Y = -1
-fieldIndex_C = -1
-threshold1 = 0
-warning = "Warning"
+
 
 class HotspotAnalysis:
     """QGIS Plugin Implementation."""
-    
+
     def __init__(self, iface):
         """Constructor.
 
@@ -84,15 +77,11 @@ class HotspotAnalysis:
         # TODO: We are going to let the user set this up in a future iteration
         self.toolbar = self.iface.addToolBar(u'HotspotAnalysis')
         self.toolbar.setObjectName(u'HotspotAnalysis')
-
         # Load output directory path
         self.dlg.lineEdit.clear()
         self.dlg.pushButton.clicked.connect(self.select_output_file)
-        #fieldindexes
-        fieldIndex_X = self.dlg.comboBox_X.currentIndex()
-        fieldIndex_Y = self.dlg.comboBox_Y.currentIndex()
-        fieldIndex_C = self.dlg.comboBox_C.currentIndex()
-        
+        self.clear_ui()
+
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
         """Get the translation for a string using Qt translation API.
@@ -107,7 +96,8 @@ class HotspotAnalysis:
         """
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
         return QCoreApplication.translate('HotspotAnalysis', message)
-        
+
+
     def add_action(
         self,
         icon_path,
@@ -180,14 +170,14 @@ class HotspotAnalysis:
         self.actions.append(action)
 
         return action
-        
+
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ":/plugins/HotspotAnalysis/icon.png"
+        icon_path = ':/plugins/HotspotAnalysis/icon.png'
         self.add_action(
             icon_path,
-            text=self.tr(u'Analyse a hotspot of a layer'),
+            text=self.tr(u'Generate Data for Hotspot Analysis'),
             callback=self.run,
             parent=self.iface.mainWindow())
             
@@ -211,6 +201,7 @@ class HotspotAnalysis:
             self.dlg.lineEdit_maxT.setEnabled(True)
             self.dlg.lineEdit_dist.setEnabled(True)
             self.dlg.lineEditThreshold.setEnabled(False)
+            self.dlg.lineEditThreshold.clear()
             self.dlg.label_threshold.setEnabled(False)
             self.dlg.label_7.setEnabled(True)
             self.dlg.label_8.setEnabled(True)
@@ -219,6 +210,9 @@ class HotspotAnalysis:
         else:
             threshold = self.dlg.lineEditThreshold.text()
             self.dlg.lineEdit_minT.setEnabled(False)
+            self.dlg.lineEdit_minT.clear()
+            self.dlg.lineEdit_maxT.clear()
+            self.dlg.lineEdit_dist.clear()
             self.dlg.lineEdit_maxT.setEnabled(False)
             self.dlg.lineEdit_dist.setEnabled(False)
             self.dlg.lineEditThreshold.setEnabled(True)
@@ -269,32 +263,33 @@ class HotspotAnalysis:
             for idx, rec in enumerate(sf.records()):
                 wr.writerow([rec[X], rec[Y], rec[C], lg_star.z_sim[idx], lg_star.p_z_sim[idx]*2.0]) # an outputput file with lg* value ,# *2 defines the both the sides of uniform function.
                 
-        print "process completed"
+        self.success_msg()
         self.clear_ui() 
         
     def load_comboBox(self,layers):
         selectedLayerIndex = self.dlg.comboBox.currentIndex()
         selectedLayer = layers[selectedLayerIndex]
+        fieldnames = []
         fieldnames = [field.name() for field in selectedLayer.pendingFields()]
         self.clear_fields()
         self.dlg.comboBox_X.addItems(fieldnames)
         self.dlg.comboBox_Y.addItems(fieldnames)
         self.dlg.comboBox_C.addItems(fieldnames)
         
-    def isnotEmpty(self):
-        if self.dlg.checkBox.isChecked() == 0:
-            if self.dlg.lineEditThreshold.text() != "":
-                return 1
-            else:
-                return 0
-        elif self.dlg.checkBox.isChecked() == 1:
-            if(self.dlg.lineEdit_dist.text() != "" and self.dlg.lineEdit_maxT.text() != "" and self.dlg.lineEdit_minT.text() != ""):
-                return 1
-            else:
-                return 0
+    def error_msg(self):
+        self.clear_ui()
+        QMessageBox.warning(self.dlg.show(), self.tr("HotspotAnalysis:Warning"),self.tr("Please specify input fields properly"),QMessageBox.Ok)
+        self.run()
+        
+    def success_msg(self):
+        QMessageBox.information(self.dlg, self.tr("HotspotAnalysis:Success"),self.tr("File is generated Succesfully"),QMessageBox.Ok)
+        
+    def validator(self):
+        if ((self.dlg.checkBox.isChecked() == 0 and self.dlg.lineEditThreshold.text() != "") or (self.dlg.checkBox.isChecked() == 1 and (self.dlg.lineEdit_dist.text() != "" and self.dlg.lineEdit_maxT.text() != "" and self.dlg.lineEdit_minT.text() != "" ))) and self.dlg.lineEdit.text()!="":
+            return 1
         else:
             return 0
-        
+            
     def run(self):
         """Run method that performs all the real work"""
         self.clear_ui() 
@@ -313,23 +308,23 @@ class HotspotAnalysis:
             selectedLayerIndex = self.dlg.comboBox.currentIndex()
             selectedLayer = layers_shp[selectedLayerIndex]
             fieldnames = [field.name() for field in selectedLayer.pendingFields()]#fetching fieldnames of layer
+            self.clear_fields()
             self.dlg.comboBox_X.addItems(fieldnames)#adding fields to comboBox
             self.dlg.comboBox_Y.addItems(fieldnames)
             self.dlg.comboBox_C.addItems(fieldnames)
             self.dlg.comboBox.activated.connect(lambda:self.load_comboBox(layers_shp))#if user changes layers
-            selectedLayerIndex = self.dlg.comboBox.currentIndex()
-            selectedLayer = layers_shp[selectedLayerIndex]
-            layerName = selectedLayer.dataProvider().dataSourceUri()
+            self.dlg.comboBox.currentIndexChanged.connect(lambda:self.load_comboBox(layers_shp))
             self.dlg.checkBox.toggled.connect(self.optimizedThreshold)#checkbox toggle event
-            #self.dlg.generateButton.clicked.connect(lambda:self.get_xy(layers_shp,layerName,selectedLayer))
-                
         
         # show the dialog
             self.dlg.show()		
         # Run the dialog event loop
             result = self.dlg.exec_()
         # See if OK was pressed and fields are not empty
-            if result and self.isnotEmpty():
+            if result and (self.validator()==1):
+                selectedLayerIndex = self.dlg.comboBox.currentIndex()
+                selectedLayer = layers_shp[selectedLayerIndex]
+                layerName = selectedLayer.dataProvider().dataSourceUri()
                 X = selectedLayer.fieldNameIndex(self.dlg.comboBox_X.currentText())
                 Y = selectedLayer.fieldNameIndex(self.dlg.comboBox_Y.currentText())
                 C = selectedLayer.fieldNameIndex(self.dlg.comboBox_C.currentText())
@@ -363,15 +358,14 @@ class HotspotAnalysis:
                         if moran.z_norm > mx_moran:
                             mx_i = i
                             mx_moran = moran.z_norm
-                    threshold1 = mx_i
+                    threshold1 = int(mx_i)
                     # Output File Creation
                 w = DistanceBand(t,threshold1, p=2, binary=False)
                 output_file = open(filename, 'w')
                 lg_star = G_Local(y,w,transform='B',star=True)
                 self.write_file(filename,sf,lg_star,self.dlg.comboBox_X.currentText(),self.dlg.comboBox_Y.currentText(),self.dlg.comboBox_C.currentText(),X,Y,C)
-    
+            elif result and (self.validator()==0):
+                self.error_msg()
             else:
                 self.clear_ui()
-                print warning
                 pass
-         

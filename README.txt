@@ -23,7 +23,7 @@ pysal:
 Open OSGeo4Shell as Administrator, type : pip install pysal
 
 shapefile: 
-Open OSGeo4Shell as Administrator, type : pip install pypshp
+Open OSGeo4Shell as Administrator, type : pip install pyshp
 
 Installation
 

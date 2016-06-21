@@ -192,10 +192,12 @@ class HotspotAnalysis:
         del self.toolbar
         
     def select_output_file(self):
+        """Selects the output file directory """
         filename = QFileDialog.getSaveFileName(self.dlg, "Select output path directory ","", '*.csv')
         self.dlg.lineEdit.setText(filename)
         
     def optimizedThreshold(self,checked):
+        """Settings for Optimized threshold"""
         if checked == True:
             self.dlg.lineEdit_minT.setEnabled(True)
             self.dlg.lineEdit_maxT.setEnabled(True)
@@ -222,6 +224,7 @@ class HotspotAnalysis:
             self.dlg.label_9.setEnabled(False)
         
     def clear_ui(self):
+        """Clearing the UI for new operations"""
         self.dlg.comboBox.clear()
         self.dlg.lineEdit.clear()
         self.dlg.lineEditThreshold.clear()
@@ -241,32 +244,26 @@ class HotspotAnalysis:
         self.dlg.label_9.setEnabled(False)
         
     def clear_fields(self):
+        """Clearing the fields when layers are changed"""
         self.dlg.comboBox_X.clear()
         self.dlg.comboBox_Y.clear()
         self.dlg.comboBox_C.clear()
         
-    def addToComboBox(self,layers):
-        layer_list = []
-        for layer in layers:
-            myfilepath= layer.dataProvider().dataSourceUri() #directory including filename
-            (myDirectory,nameFile) = os.path.split(myfilepath)#splitting into directory and filename
-            if ".shp" in nameFile:
-                layer_list.append(layer.name())
-                
-            self.dlg.comboBox.addItems(layer_list)
             
     def write_file(self,filename,sf,lg_star,field_X,field_Y,field_C,X,Y,C):
+        """Writing the csv file into the mentioned directory"""
         
         with open(filename, 'wb') as csvfile:
             wr = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             wr.writerow([field_X,field_Y,field_C , 'Z-score','P-value'])
             for idx, rec in enumerate(sf.records()):
                 wr.writerow([rec[X], rec[Y], rec[C], lg_star.z_sim[idx], lg_star.p_z_sim[idx]*2.0]) # an outputput file with lg* value ,# *2 defines the both the sides of uniform function.
-                
+        csvfile.close();
         self.success_msg()
         self.clear_ui() 
         
     def load_comboBox(self,layers):
+        """Load the fields into combobox when layers are changed"""
         selectedLayerIndex = self.dlg.comboBox.currentIndex()
         selectedLayer = layers[selectedLayerIndex]
         fieldnames = []
@@ -277,14 +274,17 @@ class HotspotAnalysis:
         self.dlg.comboBox_C.addItems(fieldnames)
         
     def error_msg(self):
+        """Message to report missing fields"""
         self.clear_ui()
         QMessageBox.warning(self.dlg.show(), self.tr("HotspotAnalysis:Warning"),self.tr("Please specify input fields properly"),QMessageBox.Ok)
         self.run()
         
     def success_msg(self):
+        """Message to report succesful file creation"""
         QMessageBox.information(self.dlg, self.tr("HotspotAnalysis:Success"),self.tr("File is generated Succesfully"),QMessageBox.Ok)
         
     def validator(self):
+        """Validator to Check whether the inputs are given properly"""
         if ((self.dlg.checkBox.isChecked() == 0 and self.dlg.lineEditThreshold.text() != "") or (self.dlg.checkBox.isChecked() == 1 and (self.dlg.lineEdit_dist.text() != "" and self.dlg.lineEdit_maxT.text() != "" and self.dlg.lineEdit_minT.text() != "" ))) and self.dlg.lineEdit.text()!="":
             return 1
         else:
@@ -312,7 +312,7 @@ class HotspotAnalysis:
             self.dlg.comboBox_X.addItems(fieldnames)#adding fields to comboBox
             self.dlg.comboBox_Y.addItems(fieldnames)
             self.dlg.comboBox_C.addItems(fieldnames)
-            self.dlg.comboBox.activated.connect(lambda:self.load_comboBox(layers_shp))#if user changes layers
+            self.dlg.comboBox.activated.connect(lambda:self.load_comboBox(layers_shp))
             self.dlg.comboBox.currentIndexChanged.connect(lambda:self.load_comboBox(layers_shp))
             self.dlg.checkBox.toggled.connect(self.optimizedThreshold)#checkbox toggle event
         
@@ -341,11 +341,10 @@ class HotspotAnalysis:
                 u=[]
                 for obj in sf.records():
                     u.append(obj[C])
-                y = numpy.array(u)
-                if self.dlg.checkBox.isChecked() == 0: #when threshold is given by user
-                    #self.get_xy(layers_shp,layerName,selectedLayer)
+                y = numpy.array(u)#pointcount
+                if self.dlg.checkBox.isChecked() == 0:#if threshold is given
                     threshold1 = int(self.dlg.lineEditThreshold.text())
-                else:#when user try to optimize the threshold
+                else:#if user needs to optimize threshold
                     mx_moran = -1000.0
                     mx_i = -1000.0
                     minT = int(self.dlg.lineEdit_minT.text())

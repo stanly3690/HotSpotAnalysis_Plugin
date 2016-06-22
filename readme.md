@@ -1,11 +1,11 @@
 #HotSpot Analysis-plugin is a QGIS which is to perform Hotspot Analysis.
-	The plugin generates a csv file which includes the  z-scores and p-values for the user mentioned x and y coordinates.
-#Requirements for installing packages:
+The plugin generates a csv file which includes the  z-scores and p-values for the user mentioned x and y coordinates.
+##Requirements for installing packages:
 Install get-pip or easy install 
-	The procedure to install get-pip is given as follows. 
+The procedure to install get-pip is given as follows. 
 
-	First download get-pip.py which is available in the link :
-	'https://bootstrap.pypa.io/get-pip.py'
+First download get-pip.py which is available in the link :
+'https://bootstrap.pypa.io/get-pip.py'
 
 	Open OSGeo4Shell as Administrator and change the directory where the downloaded file is stored and type :
 	`python get-pip.py`
@@ -26,10 +26,14 @@ Packages need to be installed to make the plug-in work properly
 	
 	Considering the system is installed with python, lets continue with the other packages. 
 	Download the files according to your python version and 32 bit or 64 bit operating system
-	`Numpy : https://pypi.anaconda.org/carlkl/simple/numpy/`
-	`Scipy : https://pypi.anaconda.org/carlkl/simple/scipy/`
+		`
+		Numpy : https://pypi.anaconda.org/carlkl/simple/numpy/
+		`
+		`
+		Scipy : https://pypi.anaconda.org/carlkl/simple/scipy/
+		`
 
-	Note: For example, in filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating system
+		Note: For example, in filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating system
 		
 	Package Installation : Open OSGeo4Shell as Administrator and change the directory where the downloaded packages are stored
 				and type the following command:
@@ -47,7 +51,7 @@ Packages need to be installed to make the plug-in work properly
 					`>pip install pyshp`
 
 				
-***##Plug-in Installation
+##Plug-in Installation
 
 	Download or clone the git repository given below into qgis python plugins folder.
 	`Github: https://github.com/stanly3690/HotSpotAnalysis_Plugin`

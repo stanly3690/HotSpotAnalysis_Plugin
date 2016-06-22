@@ -9,6 +9,7 @@ https://bootstrap.pypa.io/get-pip.py
 
 Open OSGeo4Shell as Administrator 
 and change the directory where the downloaded file is stored and type :
+
 `	
 python get-pip.py
 `
@@ -47,13 +48,12 @@ Open OSGeo4Shell as Administrator,
 And change the directory where the downloaded packages are stored and 
 type the following command:
 
-`
-> pip install numpypackagename
-`
 
-`
+> pip install numpypackagename
+
+
 > pip install scipypckagename
-`				
+				
 
 Note:  Extension should be included with the filename
 

@@ -1,18 +1,18 @@
 #HotSpot Analysis-plugin is a QGIS which is to perform Hotspot Analysis.
 	The plugin generates a csv file which includes the  z-scores and p-values for the user mentioned x and y coordinates.
-##Requirements for installing packages:
+#Requirements for installing packages:
 Install get-pip or easy install 
 	The procedure to install get-pip is given as follows. 
 
 	First download get-pip.py which is available in the link :
-	```https://bootstrap.pypa.io/get-pip.py```
+	'https://bootstrap.pypa.io/get-pip.py'
 
 	Open OSGeo4Shell as Administrator and change the directory where the downloaded file is stored and type :
-	```python get-pip.py```
+	`python get-pip.py`
 
 
 Further Information regarding installation can be found in: 
-```https://packaging.python.org/en/latest/installing/#install-pip-setuptools-and-wheel```
+`https://packaging.python.org/en/latest/installing/#install-pip-setuptools-and-wheel`
 
 
 ##Pre-requisites: 
@@ -26,8 +26,8 @@ Packages need to be installed to make the plug-in work properly
 	
 	Considering the system is installed with python, lets continue with the other packages. 
 	Download the files according to your python version and 32 bit or 64 bit operating system
-	```Numpy : https://pypi.anaconda.org/carlkl/simple/numpy/```
-	```Scipy : https://pypi.anaconda.org/carlkl/simple/scipy/```
+	`Numpy : https://pypi.anaconda.org/carlkl/simple/numpy/`
+	`Scipy : https://pypi.anaconda.org/carlkl/simple/scipy/`
 
 	Note: For example, in filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating system
 		
@@ -35,24 +35,25 @@ Packages need to be installed to make the plug-in work properly
 				and type the following command:
 
 				```> pip install numpypackagename
-				> pip install scipypckagename```
+				> pip install scipypckagename
+				```
 
 				Note:  Extension should be included with the filename
 				
 				Now we will continue with other packages 
 				pysal:  
-					>pip install pysal
+					`>pip install pysal`
 				pyshp:
-					>pip install pyshp
+					`>pip install pyshp`
 
 				
 ***##Plug-in Installation
 
 	Download or clone the git repository given below into qgis python plugins folder.
-	```Github: https://github.com/stanly3690/HotSpotAnalysis_Plugin```
+	`Github: https://github.com/stanly3690/HotSpotAnalysis_Plugin`
 
 	Note: Default plugins folder is in : 
-	```C:\Users\<username>\.qgis2\python\plugins\```
+	`C:\Users\<username>\.qgis2\python\plugins\`
 
 	
 	Then Open QGIS: Go to  Plugins -> Manage and Install plugins

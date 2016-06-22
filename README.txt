@@ -1,33 +1,69 @@
-Plugin Builder Results
+******HotSpot Analysis-plugin is a QGIS which is to perform Hotspot Analysis.*****
+	The plugin generates a csv file which includes the  z-scores and p-values for the user mentioned x and y coordinates.
 
-Your plugin HotspotAnalysis was created in:
-    C:\Users\STANLY\.qgis2\python\plugins\HotspotAnalysis
+***Requirements for installing packages:***
+install get-pip or easy install 
+	The procedure to install get-pip is given as follows. 
 
-Your QGIS plugin directory is located at:
-    C:/Users/STANLY/.qgis2/python/plugins
+	First download get-pip.py which is available in the link :https://bootstrap.pypa.io/get-pip.py
 
-What's Next:
+	Open OSGeo4Shell as Administrator and change the directory where the downloaded file is stored and type : python get-pip.py 
 
-  * Copy the entire directory containing your new plugin to the QGIS plugin
-    directory
 
-  * Compile the resources file using pyrcc4
+Further Information regarding installtion can be found in: https://packaging.python.org/en/latest/installing/#install-pip-setuptools-and-wheel
 
-  * Run the tests (``make test``)
 
-  * Test the plugin by enabling it in the QGIS plugin manager
+***Pre-requisites: Packages need to be installed to make the plug-in work properly***
 
-  * Customize it by editing the implementation file: ``hotspot_analysis.py``
+	1. python 2.7 or higher
+	2. numpy
+	3. scipy
+	4. pysal
+	5. pyshp
+	
+	Considering the system is installed with python, lets continue with the other packages. 
+	Download the files according to your python version and 32 bit or 64 bit operating system
+		Numpy : https://pypi.anaconda.org/carlkl/simple/numpy/
+		Scipy : https://pypi.anaconda.org/carlkl/simple/scipy/
 
-  * Create your own custom icon, replacing the default icon.png
+		Note: For example, in filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating system
+		
+		Package Installation : Open OSGeo4Shell as Administrator and change the directory where the downloaded packages are stored
+				and type the following command:
 
-  * Modify your user interface by opening HotspotAnalysis.ui in Qt Designer
+				> pip install numpypackagename
+				> pip install scipypckagename
 
-  * You can use the Makefile to compile your Ui and resource files when
-    you make changes. This requires GNU make (gmake)
+				Note:  Extension should be included with the filename
+				
+				Now we will continue with other packages 
+				pysal:  
+					>pip install pysal
+				pyshp:
+					>pip install pyshp
 
-For more information, see the PyQGIS Developer Cookbook at:
-http://www.qgis.org/pyqgis-cookbook/index.html
+				
+*****Plug-in Installation******
 
-(C) 2011-2014 GeoApt LLC - geoapt.com
-Git revision : $Format:%H$
+	Download or clone the git repository given below into qgis python plugins folder.
+	Github: https://github.com/stanly3690/HotSpotAnalysis_Plugin
+
+	Note: Default plugins folder is in : C:\Users\<username>\.qgis2\python\plugins\
+
+	
+	Then Open QGIS: Go to  Plugins -> Manage and Install plugins
+
+	Go to settings tab:  Enable "show also experimental plugins"
+	Then, In all plugins tab: Find "HotSpotAnalysis" and tick the Checkbox.
+	A new icon for hotspot analyis will displayed on the panel
+
+
+
+Bug tracker and Wiki
+
+
+License
+
+HotSpotAnalysis-plugin is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+Copyright © 2016 Stanly Shaji/ ArunKumar Muthusamy Politecnico Di Milano

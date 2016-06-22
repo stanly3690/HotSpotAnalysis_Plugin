@@ -224,7 +224,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Min Threshold:</string>
+     <string>Min Distance</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_dist">
@@ -247,7 +247,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Max Threshold:</string>
+     <string>Max Distance:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">
@@ -255,12 +255,12 @@
      <rect>
       <x>250</x>
       <y>20</y>
-      <width>47</width>
+      <width>61</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Distance:</string>
+     <string>Dist Steps</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_minT">

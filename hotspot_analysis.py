@@ -35,6 +35,7 @@ from pysal.weights.Distance import DistanceBand
 import numpy
 import shapefile
 import csv
+import sys
 import os
 import collections
 
@@ -368,3 +369,6 @@ class HotspotAnalysis:
             else:
                 self.clear_ui()
                 pass
+                
+class NullWriter(object):
+    def write(self, value): pass

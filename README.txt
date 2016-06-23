@@ -1,4 +1,5 @@
-******HotSpot Analysis-plugin is a QGIS which is to perform Hotspot Analysis.*****
+******HotSpot Analysis-plugin*******
+A QGIS plugin which is to perform Hotspot Analysis.*****
 	The plugin generates a csv file which includes the  z-scores and p-values for the user mentioned x and y coordinates.
 
 ***Requirements for installing packages:***
@@ -66,4 +67,4 @@ License
 
 HotSpotAnalysis-plugin is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 
-Copyright © 2016 Stanly Shaji/ ArunKumar Muthusamy Politecnico Di Milano
+Copyright Â© 2016 Stanly Shaji/ ArunKumar Muthusamy Politecnico Di Milano

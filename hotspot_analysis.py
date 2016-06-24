@@ -22,6 +22,7 @@
 """
 from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
 from PyQt4.QtGui import QAction, QIcon, QFileDialog, QComboBox, QFrame, QLineEdit, QMessageBox
+from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
 # Initialize Qt resources from file resources.py
 import resources
 # Import the code for the dialog
@@ -39,6 +40,12 @@ import sys
 import os
 import collections
 
+import sys
+
+class NullWriter(object):
+    def write(self, value): pass
+
+sys.stdout = sys.stderr = NullWriter()
 
 class HotspotAnalysis:
     """QGIS Plugin Implementation."""
@@ -194,7 +201,7 @@ class HotspotAnalysis:
         
     def select_output_file(self):
         """Selects the output file directory """
-        filename = QFileDialog.getSaveFileName(self.dlg, "Select output path directory ","", '*.csv')
+        filename = QFileDialog.getSaveFileName(self.dlg, "Select output path directory ")
         self.dlg.lineEdit.setText(filename)
         
     def optimizedThreshold(self,checked):
@@ -253,14 +260,21 @@ class HotspotAnalysis:
             
     def write_file(self,filename,sf,lg_star,field_X,field_Y,field_C,X,Y,C):
         """Writing the csv file into the mentioned directory"""
-        
-        with open(filename, 'wb') as csvfile:
-            wr = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-            wr.writerow([field_X,field_Y,field_C , 'Z-score','P-value'])
-            for idx, rec in enumerate(sf.records()):
-                wr.writerow([rec[X], rec[Y], rec[C], lg_star.z_sim[idx], lg_star.p_z_sim[idx]*2.0]) # an outputput file with lg* value ,# *2 defines the both the sides of uniform function.
-        csvfile.close();
+        wr = shapefile.Writer(shapefile.POINT)
+        wr.field('X-Cord','F','20')
+        wr.field('Y-cord','F','20')
+        wr.field('Count','I')
+        wr.field('Z-score','F','20')
+        wr.field('p-value','F','20')
+        for idx, rec in enumerate(sf.records()):
+            wr.point(rec[X], rec[Y])
+            wr.record(rec[X], rec[Y], rec[C], lg_star.z_sim[idx], lg_star.p_z_sim[idx]*2.0)
+        wr.save(filename)
         self.success_msg()
+		
+        new_layer = self.iface.addVectorLayer(filename+".shp", "HotSpot_Output", "ogr")
+        if not new_layer:
+            QMessageBox.information(self.dlg, self.tr("New Layer"),self.tr("Layer Cannot be Loaded"),QMessageBox.Ok)
         self.clear_ui() 
         
     def load_comboBox(self,layers):
@@ -359,9 +373,7 @@ class HotspotAnalysis:
                             mx_i = i
                             mx_moran = moran.z_norm
                     threshold1 = int(mx_i)
-                    # Output File Creation
                 w = DistanceBand(t,threshold1, p=2, binary=False)
-                output_file = open(filename, 'w')
                 lg_star = G_Local(y,w,transform='B',star=True)
                 self.write_file(filename,sf,lg_star,self.dlg.comboBox_X.currentText(),self.dlg.comboBox_Y.currentText(),self.dlg.comboBox_C.currentText(),X,Y,C)
             elif result and (self.validator()==0):
@@ -370,7 +382,3 @@ class HotspotAnalysis:
                 self.clear_ui()
                 pass
                 
-class NullWriter(object):
-    def write(self, value): pass
-
-sys.stdout = sys.stderr = NullWriter()

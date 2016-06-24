@@ -1,6 +1,6 @@
 #HotSpot Analysis-plugin
 A QGIS Plugin which is to perform Hotspot Analysis.
-The plugin generates a csv file which includes the  z-scores and p-values for the user mentioned x and y coordinates.
+The plugin generates a shapefile which includes the  z-scores and p-values for the user mentioned x and y coordinates.
 ##Requirements for installing packages:
 Install get-pip or easy install 
 The procedure to install get-pip is given as follows. 

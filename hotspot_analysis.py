@@ -372,3 +372,5 @@ class HotspotAnalysis:
                 
 class NullWriter(object):
     def write(self, value): pass
+
+sys.stdout = sys.stderr = NullWriter()

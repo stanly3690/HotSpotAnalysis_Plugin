@@ -270,8 +270,17 @@ class HotspotAnalysis:
             wr.point(rec[X], rec[Y])
             wr.record(rec[X], rec[Y], rec[C], lg_star.z_sim[idx], lg_star.p_z_sim[idx]*2.0)
         wr.save(filename)
+        #create the PRJ file
+        prj = open("%s.prj" % filename, "w")
+        epsg = 'GEOGCS["WGS 84",'
+        epsg += 'DATUM["WGS_1984",'
+        epsg += 'SPHEROID["WGS 84",6378137,298.257223563]]'
+        epsg += ',PRIMEM["Greenwich",0],'
+        epsg += 'UNIT["degree",0.0174532925199433]]'
+        prj.write(epsg)
+        prj.close()
+        
         self.success_msg()
-		
         new_layer = self.iface.addVectorLayer(filename+".shp", "HotSpot_Output", "ogr")
         if not new_layer:
             QMessageBox.information(self.dlg, self.tr("New Layer"),self.tr("Layer Cannot be Loaded"),QMessageBox.Ok)
@@ -381,4 +390,4 @@ class HotspotAnalysis:
             else:
                 self.clear_ui()
                 pass
-                
+              

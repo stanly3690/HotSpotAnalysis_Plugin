@@ -48,29 +48,29 @@ Note: For example, in filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, a
 ####Ubuntu Operating System
 Open Terminal Window and type the commands for the following package installations. 
 
-	1. To Install python-numpy:
-	
-	`
-	sudo apt-get install python-numpy
-	`
-	
-	2. To Install python-scipy:
-	
-	`
-	sudo apt-get install python-scipy
-	`
-	
-	3. To Install pysal:
-	
-	`
-	sudo pip install pysal
-	`
-	
-	4. To Install pyshp:
-	
-	`
-	sudo pip install pyshp
-	`
+1. To Install python-numpy:
+
+`
+sudo apt-get install python-numpy
+`
+
+2. To Install python-scipy:
+
+`
+sudo apt-get install python-scipy
+`
+
+3. To Install pysal:
+
+`
+sudo pip install pysal
+`
+
+4. To Install pyshp:
+
+`
+sudo pip install pyshp
+`
 	
 Then, Change the directory to plugins directory
 

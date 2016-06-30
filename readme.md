@@ -44,7 +44,39 @@ Scipy : https://pypi.anaconda.org/carlkl/simple/scipy/
 
 Note: For example, in filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating system
 		
-###Package Installation : 
+###Package Installation :
+####Ubuntu Operating System
+Open Terminal Window and type the commands for the following package installations. 
+	1. To Install python-numpy:
+	`
+	sudo apt-get install python-numpy
+	`
+	2. To Install python-scipy:
+	`
+	sudo apt-get install python-scipy
+	`
+	
+	3. To Install pysal:
+	`
+	sudo pip install pysal
+	`
+	
+	2. To Install pyshp:
+	`
+	sudo pip install pyshp
+	`
+Then, Change the directory to plugins directory
+`
+default: cd /usr/share/qgis/python/plugins
+`
+
+Clone the github repository into the earlier mentioned path:
+`
+sudo git clone https://github.com/stanly3690/HotSpotAnalysis_Plugin 
+`
+
+
+####Windows Operating System
 Open OSGeo4Shell as Administrator, 
 And change the directory where the downloaded packages are stored and 
 type the following command:
@@ -70,8 +102,9 @@ pysal:
 	pyshp:
 	>pip install pyshp
 `
-				
-##Plug-in Installation
+
+			
+####Plug-in Installation
 
 Download or clone the git repository given below into qgis python plugins folder.
 

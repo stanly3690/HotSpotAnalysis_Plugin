@@ -47,30 +47,39 @@ Note: For example, in filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, a
 ###Package Installation :
 ####Ubuntu Operating System
 Open Terminal Window and type the commands for the following package installations. 
+
 	1. To Install python-numpy:
+	
 	`
 	sudo apt-get install python-numpy
 	`
+	
 	2. To Install python-scipy:
+	
 	`
 	sudo apt-get install python-scipy
 	`
 	
 	3. To Install pysal:
+	
 	`
 	sudo pip install pysal
 	`
 	
-	2. To Install pyshp:
+	4. To Install pyshp:
+	
 	`
 	sudo pip install pyshp
 	`
+	
 Then, Change the directory to plugins directory
+
 `
 default: cd /usr/share/qgis/python/plugins
 `
 
 Clone the github repository into the earlier mentioned path:
+
 `
 sudo git clone https://github.com/stanly3690/HotSpotAnalysis_Plugin 
 `

@@ -260,7 +260,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Dist Steps</string>
+     <string>Dist Step:</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_minT">

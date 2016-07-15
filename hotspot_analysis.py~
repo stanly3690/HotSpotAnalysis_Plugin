@@ -384,7 +384,7 @@ class HotspotAnalysis:
                     threshold1 = int(mx_i)
                 w = DistanceBand(t,threshold1, p=2, binary=False)
                 lg_star = G_Local(y,w,transform='B',star=True)
-                self.write_file(filename,sf,lg_star,self.dlg.comboBox_X.currentText(),self.dlg.comboBox_Y.currentText(),self.dlg.comboBox_C.currentText(),X,Y,C,layerName)
+                self.write_file(filename,sf,lg_star,self.dlg.comboBox_X.currentText(),self.dlg.comboBox_Y.currentText(),self.dlg.comboBox_C.currentText(),X,Y,C,layerName,path)
             elif result and (self.validator()==0):
                 self.error_msg()
             else:

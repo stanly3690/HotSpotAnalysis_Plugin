@@ -359,7 +359,7 @@ class HotspotAnalysis:
                 t = ()
                 # create a tuple of tuple (x,y) coordinates - like "points" vector in the previous commment
                 for shape in shapes:
-                    ps = (shape.points[0][X], shape.points[0][Y]) # cordinate x and y  
+                    ps = (shape.points[0][0], shape.points[0][1]) # cordinate x and y  
                     t = t + (ps,)
                 
                 u=[]

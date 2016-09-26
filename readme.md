@@ -1,6 +1,6 @@
 #HotSpot Analysis-plugin
 A QGIS Plugin geospatial analysis tool to perform Hot and Cold spot Analysis.
-The plugin generates a shapefile which includes the  z-scores and p-values for the user mentioned x and y coordinates.
+The plugin generates a shapefile which includes the Z-scores and p-values computed from a points shapefile using features coordinates and a correspondent numerical attribute.   
 
 Further Information: https://peerj.com/preprints/2204/
 ##Requirements for installing packages:
@@ -144,4 +144,4 @@ License
 
 HotSpotAnalysis-plugin is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 
-Copyright © 2016 Stanly Shaji/ ArunKumar Muthusamy Politecnico Di Milano
+Copyright Â© 2016 Stanly Shaji/ ArunKumar Muthusamy Politecnico Di Milano

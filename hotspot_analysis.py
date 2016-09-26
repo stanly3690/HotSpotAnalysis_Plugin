@@ -365,7 +365,7 @@ class HotspotAnalysis:
                 u=[]
                 for obj in sf.records():
                     u.append(obj[C])
-                y = numpy.array(u)#pointcount
+                y = numpy.array(u)#point attribute
                 if self.dlg.checkBox.isChecked() == 0:#if threshold is given
                     threshold1 = int(self.dlg.lineEditThreshold.text())
                 else:#if user needs to optimize threshold

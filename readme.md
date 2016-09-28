@@ -134,7 +134,7 @@ Then Open QGIS: Go to  Plugins -> Manage and Install plugins
 
 Go to settings tab:  Enable "show also experimental plugins"
 Then, In all plugins tab: Find "HotSpotAnalysis" and tick the Checkbox.
-A new icon for hotspot analyis will displayed on the panel
+A new icon for Hotspot analyis will displayed on the panel
 
 
 

@@ -14,15 +14,15 @@ https://bootstrap.pypa.io/get-pip.py
 Open OSGeo4Shell as Administrator 
 and change the directory where the downloaded file is stored and type :
 
-
+`
 python get-pip.py
-
+`
 
 Further Information regarding installation can be found in: 
 
-`
+
 https://packaging.python.org/en/latest/installing/#install-pip-setuptools-and-wheel
-`
+
 
 
 ##Pre-requisites: 

@@ -4,8 +4,9 @@ The plugin generates a shapefile which includes the Z-scores and p-values (Getis
 
 Further Information: https://peerj.com/preprints/2204/
 ##Requirements for installing packages:
-Install get-pip or easy install 
-The procedure to install get-pip is given as follows. 
+Install get-pip or easy install.
+
+For **Windows OS**: The procedure to install get-pip is given as follows. 
 
 First download get-pip.py which is available in the link :
 https://bootstrap.pypa.io/get-pip.py
@@ -13,9 +14,9 @@ https://bootstrap.pypa.io/get-pip.py
 Open OSGeo4Shell as Administrator 
 and change the directory where the downloaded file is stored and type :
 
-`	
+
 python get-pip.py
-`
+
 
 Further Information regarding installation can be found in: 
 

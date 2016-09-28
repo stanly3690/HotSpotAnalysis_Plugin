@@ -1,5 +1,5 @@
 #HotSpot Analysis plugin
-A QGIS Plugin geospatial analysis tool to perform Hot and Cold spot Analysis.
+A QGIS Plugin to perform Hotspot analysis.
 The plugin generates a shapefile which includes the Z-scores and p-values (Getis-Ord Gi*) computed from a points shapefile using feature coordinates and a correspondent numerical attribute.   
 
 Further Information: https://peerj.com/preprints/2204/

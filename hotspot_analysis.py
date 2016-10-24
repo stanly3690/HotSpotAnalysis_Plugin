@@ -25,6 +25,7 @@ from PyQt4.QtGui import QAction, QIcon, QFileDialog, QComboBox, QFrame, QLineEdi
 from qgis.core import QgsMapLayerRegistry, QgsVectorLayer
 # Initialize Qt resources from file resources.py
 import resources
+import resources_rc
 # Import the code for the dialog
 from hotspot_analysis_dialog import HotspotAnalysisDialog
 import os.path
@@ -34,11 +35,12 @@ from pysal.esda.getisord import *
 
 from pysal.weights.Distance import DistanceBand
 import numpy
-import shapefile
 import csv
 import sys
 import os
 import collections
+
+from osgeo import ogr, gdal 
 
 import sys
 
@@ -237,8 +239,6 @@ class HotspotAnalysis:
         self.dlg.lineEdit.clear()
         self.dlg.lineEditThreshold.clear()
         self.dlg.comboBox_C.clear()
-        self.dlg.comboBox_X.clear()
-        self.dlg.comboBox_Y.clear()
         self.dlg.lineEditThreshold.setEnabled(True)
         self.dlg.checkBox.setChecked(False)
         self.dlg.lineEdit_minT.setEnabled(False)
@@ -253,35 +253,80 @@ class HotspotAnalysis:
         
     def clear_fields(self):
         """Clearing the fields when layers are changed"""
-        self.dlg.comboBox_X.clear()
-        self.dlg.comboBox_Y.clear()
         self.dlg.comboBox_C.clear()
         
             
-    def write_file(self,filename,sf,lg_star,field_X,field_Y,field_C,X,Y,C,layerName):
+    def write_file(self,filename,sf,lg_star,field_C,C,layerName,inLayer,inDataSource):
         """Writing the csv file into the mentioned directory"""
-        wr = shapefile.Writer(shapefile.POINT)
-        wr.field('X-Cord','F','20')
-        wr.field('Y-cord','F','20')
-        wr.field('Count','I')
-        wr.field('Z-score','F','20')
-        wr.field('p-value','F','20')
-        for idx, rec in enumerate(sf.records()):
-            wr.point(rec[X], rec[Y])
-            wr.record(rec[X], rec[Y], rec[C], lg_star.z_sim[idx], lg_star.p_z_sim[idx]*2.0)
-        wr.save(filename)
+        outDriver = ogr.GetDriverByName("ESRI Shapefile")
+        
         layerName=layerName.split('.')
         layerName.pop()
         layerName='.'.join(layerName)	
-        path_prj = layerName
-        shapeprj_path = path_prj+'.prj'
-        #identifying the epsg of input prj file
-        prj_file = open(shapeprj_path, 'r')
-        epsg = prj_file.read()
-        #create the PRJ file
-        prj = open("%s.prj" % filename, "w")
-        prj.write(epsg)
-        prj.close()
+        
+        outShapefile = filename+".shp"
+        
+        
+
+        if os.path.exists(outShapefile):
+            outDriver.DeleteDataSource(outShapefile)
+            
+        # Create the output shapefile
+        outDataSource = outDriver.CreateDataSource(outShapefile)
+    
+        
+        outLayer = outDataSource.CreateLayer("output",  inLayer.GetSpatialRef(), inLayer.GetLayerDefn().GetGeomType())
+    
+
+
+        # Add input Layer Fields to the output Layer
+        inLayerDefn = inLayer.GetLayerDefn()
+        for i in range(0, inLayerDefn.GetFieldCount()):
+            fieldDefn = inLayerDefn.GetFieldDefn(i)
+            outLayer.CreateField(fieldDefn)
+
+        ##
+        # Add additional fields - for more types other than Strings take a look at http://pcjericks.github.io/py-gdalogr-cookbook/layers.html#create-a-new-shapefile-and-add-data
+        ##
+
+        # Add empty field to store Pysal results
+        Z_field = ogr.FieldDefn("Z-score", ogr.OFTReal)
+        Z_field.SetWidth(15)
+        Z_field.SetPrecision(10)
+        outLayer.CreateField(Z_field)
+
+        p_field = ogr.FieldDefn("p-value", ogr.OFTReal)
+        p_field.SetWidth(15)
+        p_field.SetPrecision(10)
+        outLayer.CreateField(p_field)
+
+        # Get the output Layer's Feature Definition
+        outLayerDefn = outLayer.GetLayerDefn()
+        # Get the input Layer's Feature Definition
+        inLayerDefn  = inLayer.GetLayerDefn()
+
+        # Add features to the ouput Layer
+        for i in range(0, inLayer.GetFeatureCount()):
+            # Get the input Feature
+            inFeature = inLayer.GetFeature(i)
+            # Create output Feature
+            outFeature = ogr.Feature(outLayerDefn)
+            # Add field values from input Layer
+            for j in range(0, inLayerDefn.GetFieldCount()):
+                outFeature.SetField(outLayerDefn.GetFieldDefn(j).GetNameRef(), inFeature.GetField(j))
+            # Set geometry
+            geom = inFeature.GetGeometryRef()
+            outFeature.SetGeometry(geom)
+            # Add Z-scores and p-values to their field column 
+            outFeature.SetField("Z-score", lg_star.z_sim[i])
+            outFeature.SetField("p-value", lg_star.p_z_sim[i])
+            # Add new feature to output Layer
+            outLayer.CreateFeature(outFeature)
+
+        # Close DataSources
+        inDataSource.Destroy()
+        outDataSource.Destroy()
+    
         
         self.success_msg()
         new_layer = self.iface.addVectorLayer(filename+".shp", "HotSpot_Output", "ogr")
@@ -296,8 +341,6 @@ class HotspotAnalysis:
         fieldnames = []
         fieldnames = [field.name() for field in selectedLayer.pendingFields()]
         self.clear_fields()
-        self.dlg.comboBox_X.addItems(fieldnames)
-        self.dlg.comboBox_Y.addItems(fieldnames)
         self.dlg.comboBox_C.addItems(fieldnames)
         
     def error_msg(self):
@@ -336,8 +379,6 @@ class HotspotAnalysis:
             selectedLayer = layers_shp[selectedLayerIndex]
             fieldnames = [field.name() for field in selectedLayer.pendingFields()]#fetching fieldnames of layer
             self.clear_fields()
-            self.dlg.comboBox_X.addItems(fieldnames)#adding fields to comboBox
-            self.dlg.comboBox_Y.addItems(fieldnames)
             self.dlg.comboBox_C.addItems(fieldnames)
             self.dlg.comboBox.activated.connect(lambda:self.load_comboBox(layers_shp))
             self.dlg.comboBox.currentIndexChanged.connect(lambda:self.load_comboBox(layers_shp))
@@ -352,23 +393,30 @@ class HotspotAnalysis:
                 selectedLayerIndex = self.dlg.comboBox.currentIndex()
                 selectedLayer = layers_shp[selectedLayerIndex]
                 layerName = selectedLayer.dataProvider().dataSourceUri()
-                X = selectedLayer.fieldNameIndex(self.dlg.comboBox_X.currentText())
-                Y = selectedLayer.fieldNameIndex(self.dlg.comboBox_Y.currentText())
                 C = selectedLayer.fieldNameIndex(self.dlg.comboBox_C.currentText())
                 filename = self.dlg.lineEdit.text()
                 (path,layer_id) = layerName.split('|')
-                sf = shapefile.Reader(path)
-                shapes = sf.shapes()
-                t = ()
-                # create a tuple of tuple (x,y) coordinates - like "points" vector in the previous commment
-                for shape in shapes:
-                    ps = (shape.points[0][0], shape.points[0][1]) # cordinate x and y  
-                    t = t + (ps,)
+            
                 
-                u=[]
-                for obj in sf.records():
-                    u.append(obj[C])
+                inDriver = ogr.GetDriverByName("ESRI Shapefile")
+                inDataSource = inDriver.Open(path, 0)
+                inLayer = inDataSource.GetLayer()
+                
+                
+                t = ()
+                for feature in inLayer:
+                    geometry = feature.GetGeometryRef()
+                    xy= (geometry.GetX(), geometry.GetY())
+                    t = t+ (xy,)
+                
+                u=[] 
+                for i in range(0, inLayer.GetFeatureCount()):
+                    geometry = inLayer.GetFeature(i)
+                    u.append(geometry.GetField("Attribute"))    
+                    
                 y = numpy.array(u)#point attribute
+                
+                
                 if self.dlg.checkBox.isChecked() == 0:#if threshold is given
                     threshold1 = int(self.dlg.lineEditThreshold.text())
                 else:#if user needs to optimize threshold
@@ -387,7 +435,7 @@ class HotspotAnalysis:
                     threshold1 = int(mx_i)
                 w = DistanceBand(t,threshold1, p=2, binary=False)
                 lg_star = G_Local(y,w,transform='B',star=True)
-                self.write_file(filename,sf,lg_star,self.dlg.comboBox_X.currentText(),self.dlg.comboBox_Y.currentText(),self.dlg.comboBox_C.currentText(),X,Y,C,layerName)
+                self.write_file(filename,inLayer,lg_star,self.dlg.comboBox_C.currentText(),C,layerName, inLayer, inDataSource)
             elif result and (self.validator()==0):
                 self.error_msg()
             else:

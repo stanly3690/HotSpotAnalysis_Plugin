@@ -42,7 +42,6 @@ Packages need to be installed to make the plug-in work properly
 2. numpy
 3. scipy
 4. pysal
-
 ~~5. pyshp~~
 	
 Considering the system is installed with python, lets continue with the other packages. 
@@ -83,7 +82,7 @@ sudo pip install pysal
 ~~To Install pyshp:~~
 
 
-~~sudo pip install pyshp~~
+>~~sudo pip install pyshp~~
 
 	
 Then, Change the directory to plugins directory

@@ -270,7 +270,10 @@ class HotspotAnalysis:
             wr.point(rec[X], rec[Y])
             wr.record(rec[X], rec[Y], rec[C], lg_star.z_sim[idx], lg_star.p_z_sim[idx]*2.0)
         wr.save(filename)
-        (path_prj,ext) = layerName.split('.')
+        layerName=layerName.split('.')
+        layerName.pop()
+        layerName='.'.join(layerName)	
+        path_prj = layerName
         shapeprj_path = path_prj+'.prj'
         #identifying the epsg of input prj file
         prj_file = open(shapeprj_path, 'r')

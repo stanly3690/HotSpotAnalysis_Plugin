@@ -319,7 +319,7 @@ class HotspotAnalysis:
             outFeature.SetGeometry(geom)
             # Add Z-scores and p-values to their field column 
             outFeature.SetField("Z-score", lg_star.z_sim[i])
-            outFeature.SetField("p-value", lg_star.p_z_sim[i])
+            outFeature.SetField("p-value", lg_star.p_z_sim[i]*2)
             # Add new feature to output Layer
             outLayer.CreateFeature(outFeature)
 

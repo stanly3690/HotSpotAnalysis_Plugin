@@ -4,7 +4,7 @@ The plugin generates a shapefile which includes the Z-scores and p-values (Getis
 
 Further Information: https://peerj.com/preprints/2204/
 
-##NEW VERSION AVAILBLE! (24/10/2016)
+##NEW VERSION AVAILABLE! (24/10/2016)
 **Main changes**: 
 
 1) Pyshp dependency removed (substituted whith GDAL/OGR)

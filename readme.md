@@ -115,14 +115,10 @@ Note:  Extension should be included with the filename
 
 Now we will continue with other packages 
 
-`
-pysal:  
-	>pip install pysal
-`
+>pip install pysal
 
 
-~~pyshp:
-	>pip install pyshp~~
+>~~pip install pyshp~~
 
 
 			

@@ -42,7 +42,7 @@ Packages need to be installed to make the plug-in work properly
 2. numpy
 3. scipy
 4. pysal
-~~5. pyshp~~
+5. ~~pyshp~~
 	
 Considering the system is installed with python, lets continue with the other packages. 
 Download the files according to your python version and 32 bit or 64 bit operating system
@@ -121,8 +121,8 @@ pysal:
 `
 
 
-~~pyshp:~~
-	>pip install pyshp
+~~pyshp:
+	>pip install pyshp~~
 
 
 			

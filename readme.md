@@ -3,6 +3,16 @@ A QGIS Plugin to perform Hotspot analysis.
 The plugin generates a shapefile which includes the Z-scores and p-values (Getis-Ord Gi*) computed from a points shapefile using feature coordinates and a correspondent numerical attribute.   
 
 Further Information: https://peerj.com/preprints/2204/
+
+##NEW VERSION AVAILBLE! (24/10/2016)
+**Main changes**: 
+
+1) Pyshp dependency removed (substituted whith GDAL/OGR)
+
+2) UI semplified: input X,Y point coordinates no more needful
+
+(unuseful actions in the installation procedure have been ~~removed~~)
+
 ##Requirements for installing packages:
 Install get-pip or easy install.
 
@@ -32,7 +42,7 @@ Packages need to be installed to make the plug-in work properly
 2. numpy
 3. scipy
 4. pysal
-5. pyshp
+~~5. pyshp~~
 	
 Considering the system is installed with python, lets continue with the other packages. 
 Download the files according to your python version and 32 bit or 64 bit operating system
@@ -69,10 +79,10 @@ To Install pysal:
 sudo pip install pysal
 `
 
-To Install pyshp:
+~~To Install pyshp:~~
 
 `
-sudo pip install pyshp
+~~sudo pip install pyshp~~
 `
 	
 Then, Change the directory to plugins directory
@@ -111,8 +121,8 @@ pysal:
 `
 
 `
-	pyshp:
-	>pip install pyshp
+~~pyshp:~~
+	~~>pip install pyshp~~
 `
 
 			

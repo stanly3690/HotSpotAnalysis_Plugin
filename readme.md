@@ -107,7 +107,7 @@ type the following command:
 > pip install numpypackagename
 
 
-> pip install scipypckagename
+> pip install scipypackagename
 				
 
 Note:  Extension should be included with the filename

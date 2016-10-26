@@ -4,7 +4,7 @@ A QGIS Plugin to perform Hotspot analysis based on the Python Spatial Analysis L
 
 The Hotspot analysis plugin associate the Z-scores and p-values of the Gi* local statistic ([Getis and Ord, 1992]) for each feature of a points shapefile, characterized by X,Y PROJECTED coordinates and an associated numerical attribute. Output layer enables to indentify hotspots (or coldspots) in the input dataset. 
 
-Positive and statistically significant Z-scores, the larger the Z-score is, indicates intense cluster of high values (hotspot). Negative and statistically significant Z-scores, the smaller the Z-score is, indicates intense cluster of low values (coldspot)
+Positive and statistically significant Z-score (the larger the Z-score is) indicates intense cluster of high values (hotspot). Negative and statistically significant Z-score (the smaller the Z-score is) indicates intense cluster of low values (coldspot).
 
 Spatial relation between features is modeled using a Fixed Distance Band (expressed with the same unit of measure of the projected coordinate system of the input shapefile), which allows to compute Gi* for any point by considering its neighborhoods within this fixed distance. For more information, please refer to: [Geospatial Analysis - 5th Edition, 2015 - de Smith, Goodchild, Longley]
 

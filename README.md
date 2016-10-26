@@ -1,6 +1,6 @@
 # Hotspot Analysis Plugin for QGIS
 
-A QGIS Plugin to perform Hotspot analysis based on the #Python Spatial Analysis Library# - [PySAL]. 
+A QGIS Plugin to perform Hotspot analysis based on the Python Spatial Analysis Library - [PySAL]. 
 
 The Hotspot analysis plugin associate the Z-scores and p-values of the Gi* local statistic ([Getis and Ord, 1992]) for each feature of a points shapefile, characterized by (at least) from X,Y coordinates and an associated numerical attribute. Output layer enables to indentify hotspots (or coldspots) in the input dataset. 
 

@@ -49,9 +49,10 @@ Note: extension must be included with the filename
 Download or clone the `Github` repository given below into QGIS Python Plugins folder.
 https://github.com/stanly3690/HotSpotAnalysis_Plugin 
 
-Note: default Plugins folder is in:
-  : C:\Users\\<your_user_name>\\.qgis2\python\plugins
-
+Note: default Plugins folder is:
+```sh
+ $ cd C:\Users\\<your_user_name>\\.qgis2\python\plugins
+``` 
 Open QGIS:
 
 Go to `Plugins` -> `Manage and Install plugins`

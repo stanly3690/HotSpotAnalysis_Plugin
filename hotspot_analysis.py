@@ -412,7 +412,7 @@ class HotspotAnalysis:
                 u=[] 
                 for i in range(0, inLayer.GetFeatureCount()):
                     geometry = inLayer.GetFeature(i)
-                    u.append(geometry.GetField("Attribute"))    
+                    u.append(geometry.GetField(C))    
                     
                 y = numpy.array(u)#point attribute
                 

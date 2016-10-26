@@ -33,7 +33,7 @@ Download the following packages according to your Python version and your Operat
 
  `Scipy` : https://pypi.anaconda.org/carlkl/simple/scipy/ 
  
- Note: for example, the filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating System
+ Note: for example, in the filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating System
 
 Change the directory to where the downloaded packages are stored and type the following commands:
 

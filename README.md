@@ -92,6 +92,7 @@ A new icon for Hotspot analyis will appear on the QGIS main panel.
 ___
 
 An example of plugin usage is available here: https://peerj.com/preprints/2204/
+Note: the paper included in the previus URL is based on the old version of the plugin
 ___
 Bug tracker and Wiki
 

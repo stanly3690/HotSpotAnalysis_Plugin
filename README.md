@@ -51,7 +51,7 @@ https://github.com/stanly3690/HotSpotAnalysis_Plugin
 
 Note: default Plugins folder is:
 ```sh
- $ cd C:\Users\\<your_user_name>\\.qgis2\python\plugins
+ $ cd C:\Users\<your_user_name>\.qgis2\python\plugins
 ``` 
 Open QGIS:
 

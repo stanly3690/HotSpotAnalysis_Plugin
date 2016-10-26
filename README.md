@@ -91,6 +91,8 @@ In `All plugins` tab, look for `HotSpotAnalysis` and tick the Checkbox.
 A new icon for Hotspot analyis will appear on the QGIS main panel.
 ___
 
+An example of plugin usage is available here: https://peerj.com/preprints/2204/
+___
 Bug tracker and Wiki
 
 ##### License

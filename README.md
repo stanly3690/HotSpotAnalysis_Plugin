@@ -83,9 +83,7 @@ Clone the `GitHub` repository into the earlier mentioned path:
 ```
 Then Open QGIS:
 
-Go to `Plugins` -> `Manage and Install plugins`
-
-Go to `settings` -> `Show also experimental plugins` 
+Go to `Plugins` -> `Manage and Install plugins` -> `settings` -> `Show also experimental plugins` 
 
 In `All plugins` tab, look for `HotSpotAnalysis` and tick the Checkbox.  
 A new icon for Hotspot analyis will appear on the QGIS main panel.

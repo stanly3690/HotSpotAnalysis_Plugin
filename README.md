@@ -20,7 +20,7 @@ ___
 
 Download `get-pip.py` ,to enable `PIP` functionalities, which is available at this link: <https://bootstrap.pypa.io/get-pip.py> 
 
-Open `OSGeo4Shell` as `Administrator` and change the working directory where the `get-pip.py` file is stored and type :
+Open `OSGeo4W Shell` as `Administrator` and change the working directory where the `get-pip.py` file is stored and type :
 ```sh
  $ python get-pip.py
 ```

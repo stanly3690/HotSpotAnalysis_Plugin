@@ -55,9 +55,7 @@ Note: default Plugins folder is:
 ``` 
 Open QGIS:
 
-Go to `Plugins` -> `Manage and Install plugins`
-
-Go to `settings` -> `show also experimental plugins` 
+Go to `Plugins` -> `Manage and Install plugins` -> `settings` -> `show also experimental plugins` 
 
 In `All plugins` tab, look for `HotSpotAnalysis` and tick the checkbox.  
 A new icon for Hotspot analyis will appear on the QGIS main panel.

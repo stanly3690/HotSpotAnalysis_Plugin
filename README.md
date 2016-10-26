@@ -93,7 +93,7 @@ Note: this paper is based on the old version of the plugin!
 
 The current version does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS.
 
-A demo exercise on the plugin application is available here: 
+A demo exercise with the new plugin version here: 
 ___
 Bug tracker and Wiki
 

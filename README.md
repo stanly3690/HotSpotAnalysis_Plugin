@@ -1,5 +1,4 @@
 # Hotspot Analysis Plugin for QGIS
-## User Guide
 
 A QGIS Plugin to perform Hotspot analysis based on the Python Spatial Analysis Library - [PySAL]. 
 
@@ -15,69 +14,69 @@ Dependency Requirements:
   - `Numpy`
   - `Scipy`
 
-These libraries are not included in the QGIS core libraries and must be installed prior to the use of the plugin through the [OSGeo4W Shell] on Windows, or through terminal commands on Ubuntu. 
+These libraries are not included in the QGIS core libraries and must be installed prior to the use of the plugin through the [OSGeo4W Shell] on Windows, or through terminal on Ubuntu. 
 ___
 ### Installation - Windows OS
 
-First download `get-pip.py` which is available in the link <https://bootstrap.pypa.io/get-pip.py> to enable `PIP` functionalities. 
+Download `get-pip.py` ,to enable `PIP` functionalities, which is available at this link: <https://bootstrap.pypa.io/get-pip.py> 
 
-Open `OSGeo4Shell` as `Administrator` and change the directory where the `get-pip.py` file is stored and then type :
+Open `OSGeo4Shell` as `Administrator` and change the working directory where the `get-pip.py` file is stored and type :
 ```sh
  $ python get-pip.py
 ```
 (Further Information regarding `PIP` installation can be found in:
 https://packaging.python.org/en/latest/installing/#install-pip-setuptools-and-wheel)
 
-Download the following packages according to your Python version and your operating system characteristics:
+Download the following packages according to your Python version and your Operating System characteristics:
  
  `Numpy` : https://pypi.anaconda.org/carlkl/simple/numpy/ 
 
  `Scipy` : https://pypi.anaconda.org/carlkl/simple/scipy/ 
  
- Note: For example, in filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating system
+ Note: for example, the filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating System
 
-Change the directory to where the downloaded packages are stored and type the following command:
+Change the directory to where the downloaded packages are stored and type the following commands:
 
 ```sh
  $ pip install numpypackagename
  $ pip install scipypackagename
 ```
-Note: Extension must be included with the filename
+Note: extension must be included with the filename
 ```sh
  $ pip install pysal
 ```
 
-Download or clone the `Github` repository given below into qgis python plugins folder.
+Download or clone the `Github` repository given below into QGIS Python Plugins folder.
 https://github.com/stanly3690/HotSpotAnalysis_Plugin 
 
-Note: Default plugins folder is in:
+Note: default Plugins folder is in:
   : C:\Users\\<your_user_name>\\.qgis2\python\plugins
 
-Then Open QGIS:
+Open QGIS:
 
 Go to `Plugins` -> `Manage and Install plugins`
 
 Go to `settings` -> `show also experimental plugins` 
 
-In `All plugins` tab, look for `HotSpotAnalysis` and tick the Checkbox.  
+In `All plugins` tab, look for `HotSpotAnalysis` and tick the checkbox.  
 A new icon for Hotspot analyis will appear on the QGIS main panel.
 ___
 ### Installation - Ubuntu
 
-Open a Terminal and type the commands for the following package installations.
+Open a Terminal and type the commands:
 ```sh
  $ sudo apt-get install python-numpy
  $ sudo apt-get install python-scipy 
 ```
-To Install pysal:
+To install PySAL:
 ```sh
  $ sudo pip install pysal
 ```
-Change directory to QGIS plugins directory:
-
- default is : cd /usr/share/qgis/python/plugins 
-
-Clone the github repository into the earlier mentioned path:
+Change directory to QGIS Plugins directory, default is : 
+```sh
+ $ cd /usr/share/qgis/python/plugins 
+``` 
+Clone the `GitHub` repository into the earlier mentioned path:
 ```sh
  $  sudo git clone https://github.com/stanly3690/HotSpotAnalysis_Plugin 
 ```

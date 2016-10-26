@@ -9,12 +9,12 @@
 [general]
 name=Hotspot Analysis
 qgisMinimumVersion=2.0
-description=This plugin generates data needed for hotspot Analysis
+description=This plugin implement statistics needed for Hotspot Analysis
 version=0.1
 author=Stanly Shaji, Arunkumar, Daniele Oxoli, Mayra Zurbaràn / Politecnico Di Milano 
 email=stanly.shaji@mail.polimi.it, daniele.oxoli@polimi.it
 
-about=Plugin generates data required for hotspot analysis from coordinates and point count values as input
+about=Plugin implement Getis-Ord Gi* local statistic to perform Hotspot analysis 
 
 tracker=https://github.com/stanly3690/HotSpotAnalysis_Plugin/issues
 repository=https://github.com/stanly3690/HotSpotAnalysis_Plugin.git

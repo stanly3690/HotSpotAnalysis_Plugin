@@ -10,11 +10,11 @@ Spatial relation between features is modeled using a Fixed Distance Band (expres
 
 Dependency Requirements:
 
-  - `PySAL`
-  - `Numpy`
-  - `Scipy`
+  - **`PySAL`**
+  - **`Numpy`**
+  - **`Scipy`**
 
-These libraries are not included in the QGIS core libraries and must be installed prior to the use of the plugin through the [OSGeo4W Shell] on Windows, or through terminal on Ubuntu. 
+These libraries are not included in the QGIS core libraries and must be installed prior to the use of the plugin through the [OSGeo4W Shell] on **Windows**, or through terminal on **Ubuntu**. 
 ___
 ### Installation - Windows OS
 
@@ -33,7 +33,7 @@ Download the following packages according to your Python version and your Operat
 
  `Scipy` : https://pypi.anaconda.org/carlkl/simple/scipy/ 
  
- Note: for example, in the filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating System
+**Note**: for example, in the filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating System
 
 Change the directory to where the downloaded packages are stored and type the following commands:
 
@@ -41,7 +41,7 @@ Change the directory to where the downloaded packages are stored and type the fo
  $ pip install numpypackagename
  $ pip install scipypackagename
 ```
-Note: extension must be included with the filename
+**Note**: extension must be included with the filename
 ```sh
  $ pip install pysal
 ```
@@ -49,7 +49,7 @@ Note: extension must be included with the filename
 Download or clone the `Github` repository given below into QGIS Python Plugins folder.
 https://github.com/stanly3690/HotSpotAnalysis_Plugin 
 
-Note: default Plugins folder is:
+**Note**: default Plugins folder is:
 ```sh
  $ cd C:\Users\<your_user_name>\.qgis2\python\plugins
 ``` 
@@ -62,12 +62,12 @@ A new icon for Hotspot analyis will appear on the QGIS main panel.
 ___
 ### Installation - Ubuntu
 
-Open a Terminal and type the commands:
+Open a **Terminal** and type the commands:
 ```sh
  $ sudo apt-get install python-numpy
  $ sudo apt-get install python-scipy 
 ```
-To install PySAL:
+To install **PySAL**:
 ```sh
  $ sudo pip install pysal
 ```
@@ -89,7 +89,7 @@ ___
 
 An example of plugin application is available here: https://peerj.com/preprints/2204/
 
-Note: this paper is based on the old version of the plugin! 
+**Note**: this paper is based on the old version of the plugin! 
 
 The current version does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS.
 

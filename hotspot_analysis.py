@@ -329,7 +329,7 @@ class HotspotAnalysis:
     
         
         self.success_msg()
-        new_layer = self.iface.addVectorLayer(filename+".shp", str(filename), "ogr")
+        new_layer = self.iface.addVectorLayer(filename+".shp", "Hotspot_output", "ogr")
         if not new_layer:
             QMessageBox.information(self.dlg, self.tr("New Layer"),self.tr("Layer Cannot be Loaded"),QMessageBox.Ok)
         self.clear_ui() 

@@ -257,7 +257,7 @@ class HotspotAnalysis:
         
             
     def write_file(self,filename,sf,lg_star,field_C,C,layerName,inLayer,inDataSource):
-        """Writing the csv file into the mentioned directory"""
+        """Writing the output shapefile into the mentioned directory"""
         outDriver = ogr.GetDriverByName("ESRI Shapefile")
         
         layerName=layerName.split('.')

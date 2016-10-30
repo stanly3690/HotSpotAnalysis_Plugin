@@ -24,7 +24,7 @@ Open `OSGeo4W Shell` as `Administrator` and change the working directory where t
 ```sh
  $ python get-pip.py
 ```
-(Further Information regarding `PIP` installation can be found in:
+(Further information regarding `PIP` installation can be found in:
 https://packaging.python.org/en/latest/installing/#install-pip-setuptools-and-wheel)
 
 Download the following packages according to your Python version and your Operating System characteristics:

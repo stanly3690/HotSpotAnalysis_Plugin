@@ -42,7 +42,6 @@ import collections
 
 from osgeo import ogr, gdal 
 
-import sys
 
 class NullWriter(object):
     def write(self, value): pass

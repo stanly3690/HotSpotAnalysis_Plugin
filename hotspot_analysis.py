@@ -32,13 +32,11 @@ import os.path
 
 import pysal
 from pysal.esda.getisord import *
-
 from pysal.weights.Distance import DistanceBand
+
 import numpy
-import csv
 import sys
 import os
-import collections
 
 from osgeo import ogr, gdal 
 

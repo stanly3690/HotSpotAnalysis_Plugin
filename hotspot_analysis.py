@@ -36,7 +36,6 @@ from pysal.weights.Distance import DistanceBand
 
 import numpy
 import sys
-import os
 
 from osgeo import ogr, gdal 
 

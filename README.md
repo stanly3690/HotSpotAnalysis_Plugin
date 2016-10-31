@@ -58,7 +58,7 @@ Open QGIS:
 Go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
 
 In `All plugins` tab, look for `HotSpotAnalysis` and tick the checkbox.  
-A new icon for Hotspot analyis will appear on the QGIS main panel.
+A new icon for Hotspot Analysis will appear on the QGIS main panel.
 ___
 ### Installation - Ubuntu
 
@@ -84,7 +84,7 @@ Then Open QGIS:
 Go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
 
 In `All plugins` tab, look for `HotSpotAnalysis` and tick the Checkbox.  
-A new icon for Hotspot analyis will appear on the QGIS main panel.
+A new icon for Hotspot Analysis will appear on the QGIS main panel.
 ___
 
 ### Installation - macOS
@@ -114,7 +114,7 @@ Then Open QGIS:
 Go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
 
 In `All plugins` tab, look for `HotSpotAnalysis` and tick the Checkbox.  
-A new icon for Hotspot analyis will appear on the QGIS main panel.
+A new icon for Hotspot Analysis will appear on the QGIS main panel.
 ___
 
 An example of plugin application is available here: https://peerj.com/preprints/2204/

@@ -87,6 +87,37 @@ In `All plugins` tab, look for `HotSpotAnalysis` and tick the Checkbox.
 A new icon for Hotspot analyis will appear on the QGIS main panel.
 ___
 
+___
+### Installation - macOS
+
+Open a **Terminal** and type the commands:
+```sh
+ $ sudo pip install numpy
+ $ sudo pip install scipy 
+ $ sudo pip install pysal
+```
+Change directory to QGIS Plugins directory, default is: 
+```sh
+ $ cd ~/.qgis2/python/plugins
+``` 
+Open the folder:
+```sh
+ $ open . 
+``` 
+Download and copy here the unzipped repository folder
+
+or Clone the `GitHub` repository into the earlier mentioned path:
+```sh
+ $  sudo git clone https://github.com/stanly3690/HotSpotAnalysis_Plugin 
+```
+Then Open QGIS:
+
+Go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
+
+In `All plugins` tab, look for `HotSpotAnalysis` and tick the Checkbox.  
+A new icon for Hotspot analyis will appear on the QGIS main panel.
+___
+
 An example of plugin application is available here: https://peerj.com/preprints/2204/
 
 **Note**: this paper is based on the **old version of the plugin**! 

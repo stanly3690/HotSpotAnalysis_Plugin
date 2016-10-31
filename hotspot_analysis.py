@@ -438,3 +438,4 @@ class HotspotAnalysis:
                 self.clear_ui()
                 pass
               
+        self.iface.activeLayer().loadNamedStyle(os.path.dirname(__file__) + "/hotspots_class.qml")              

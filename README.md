@@ -104,7 +104,7 @@ Open the folder:
 ```sh
  $ open . 
 ``` 
-Download and copy here the unzipped repository folder
+**Download and copy** here the unzipped repository folder (suggested)
 
 or Clone the `GitHub` repository into the earlier mentioned path:
 ```sh

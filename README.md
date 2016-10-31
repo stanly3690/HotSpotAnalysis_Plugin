@@ -93,7 +93,7 @@ An example of plugin application is available here: https://peerj.com/preprints/
 
 The current version **does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table** of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS. With this new version, the output layer is display with an **automatic style** which enable Hotspot and Coldspot visualization.
 
-A demo exercise with the new plugin version here: 
+A demo exercise with the new plugin version here: (_file under construction, contact the author for any issue_)
 ___
 Bug tracker and Wiki
 

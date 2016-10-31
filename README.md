@@ -89,9 +89,10 @@ ___
 
 An example of plugin application is available here: https://peerj.com/preprints/2204/
 
-**Note**: this paper is based on the old version of the plugin! 
+**Note**: this paper is based on the **old version of the plugin**! 
 
-The current version **does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table** of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS. With this new version, the output layer is display with an **automatic style** which enable Hotspot and Coldspot visualization.
+The current version **does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table** of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS. Nevertheless, be sure that your input shapefile is projected. The unit of measure in which you express the analysis distance must agree with the one of the projected coordinate system of your input layer. 
+With this new version, the output layer is displayed with an **automatic style** which enable Hotspot and Coldspot visualization.
 
 A demo exercise with the new plugin version here: (_file under construction, contact the author for any issue_)
 ___

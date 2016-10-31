@@ -87,7 +87,6 @@ In `All plugins` tab, look for `HotSpotAnalysis` and tick the Checkbox.
 A new icon for Hotspot analyis will appear on the QGIS main panel.
 ___
 
-___
 ### Installation - macOS
 
 Open a **Terminal** and type the commands:

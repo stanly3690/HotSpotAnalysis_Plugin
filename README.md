@@ -89,11 +89,13 @@ ___
 
 ### Installation - macOS
 
-Open a **Terminal** and type the commands:
+If you installed QGIS on your machine using this source : http://www.kyngchaos.com/software/qgis , you would find the required dependencies (**Numpy - Scipy - Pysal**) in the list of the **Optional Python Modules** and you can install them directly from here: http://www.kyngchaos.com/software/python (strongly suggested)
+
+Otherwise, open a **Terminal** and type the commands:
 ```sh
  $ sudo pip install numpy
  $ sudo pip install scipy 
- $ sudo pip install pysal
+ $ sudo easy_install pysal
 ```
 Change directory to QGIS Plugins directory, default is: 
 ```sh

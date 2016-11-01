@@ -89,7 +89,7 @@ ___
 
 ### Installation - macOS
 
-If you installed QGIS on your machine using this source : http://www.kyngchaos.com/software/qgis , you would find the required dependencies (**Numpy - Scipy - Pysal**) in the list of the **Optional Python Modules** and you can install them directly from here: http://www.kyngchaos.com/software/python (strongly suggested)
+If you installed QGIS on your machine using this source : http://www.kyngchaos.com/software/qgis , you would find the required dependencies (**Numpy - Scipy - Pysal**) in the list of the **Optional Python Modules**. You can install them directly from here: http://www.kyngchaos.com/software/python (strongly suggested)
 
 Otherwise, open a **Terminal** and type the commands:
 ```sh

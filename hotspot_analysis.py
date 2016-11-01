@@ -432,6 +432,8 @@ class HotspotAnalysis:
                 w = DistanceBand(t,threshold1, p=2, binary=False)
                 lg_star = G_Local(y,w,transform='B',star=True)
                 self.write_file(filename,inLayer,lg_star,self.dlg.comboBox_C.currentText(),C,layerName, inLayer, inDataSource)
+                # assign the style to the output layer on QGIS 
+                self.iface.activeLayer().loadNamedStyle(os.path.dirname(__file__) + "/hotspots_class.qml")
             elif result and (self.validator()==0):
                 self.error_msg()
             else:

@@ -26,7 +26,7 @@ repository=https://github.com/stanly3690/HotSpotAnalysis_Plugin.git
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=hotspotanalysis
+tags= hotspot, python, ESDA, vector, points 
 
 homepage=https://github.com/stanly3690
 category=Plugins

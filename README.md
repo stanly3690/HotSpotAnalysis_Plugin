@@ -86,7 +86,6 @@ Go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also expe
 In `All plugins` tab, look for `HotSpotAnalysis` and tick the Checkbox.  
 A new icon for Hotspot Analysis will appear on the QGIS main panel.
 ___
-
 ### Installation - macOS
 
 If you installed QGIS on your machine using this source : http://www.kyngchaos.com/software/qgis , you would find the required dependencies (**Numpy - Scipy - Pysal**) in the list of the **Optional Python Modules**. You can install them directly from here: http://www.kyngchaos.com/software/python (strongly suggested)
@@ -129,6 +128,11 @@ With this new version, the output layer is displayed with an **automatic style**
 
 A demo exercise with the new plugin version here: (_file under construction, contact the author for any issue_)
 ___
+##Future work
+
+...
+___
+
 Bug tracker and Wiki
 
 ##### License

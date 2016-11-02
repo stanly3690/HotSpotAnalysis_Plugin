@@ -128,7 +128,7 @@ With this new version, the output layer is displayed with an **automatic style**
 
 A demo exercise with the new plugin version here: (_file under construction, contact the author for any issue_)
 ___
-##Future work
+###Future work
 
 ...
 ___

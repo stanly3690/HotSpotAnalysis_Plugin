@@ -343,7 +343,7 @@ class HotspotAnalysis:
         """Message to report missing fields"""
         self.clear_ui()
         QMessageBox.warning(self.dlg.show(), self.tr("HotspotAnalysis:Warning"),self.tr("Please specify input fields properly"),QMessageBox.Ok)
-        self.run()
+        #self.run()
         
     def success_msg(self):
         """Message to report succesful file creation"""

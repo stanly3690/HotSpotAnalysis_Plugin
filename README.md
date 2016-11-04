@@ -124,8 +124,8 @@ An example of plugin application is available here: https://peerj.com/preprints/
 
 The current version **does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table** of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS. Nevertheless, be sure that your input shapefile is projected. The unit of measure in which you express the analysis distance must agree with the one of the projected coordinate system of your input layer. 
 
-With this new version, the output layer is displayed with an **automatic style** which enables hotspot and coldspot visualization. Moreover, a **default Fixed Distance Band** is suggested which represents the minimum distance to ensure 
-at least 1 neighbor to any point of the dataset in order to compute spatial weighs for Gi* 
+With this new version, the output layer is displayed with an **automatic style** which enables hotspot and coldspot visualization. Moreover, a **default Fixed Distance Band** is dispalyed.This latter represents the minimum distance to ensure 
+at least 1 neighbor to any point of the dataset in order to compute spatial weights for Gi* 
 
 A demo exercise with the new plugin version here: (_file under construction, contact the author for any issue_)
 ___

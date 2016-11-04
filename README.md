@@ -14,7 +14,7 @@ Dependency Requirements:
   - **`Numpy`**
   - **`Scipy`**
 
-These libraries are not included in the QGIS core libraries and must be installed prior to the use of the plugin through the [OSGeo4W Shell] on **Windows**, or through terminal on **Ubuntu**. 
+These libraries are not included in the QGIS core libraries and must be installed prior to the use of the plugin through the [OSGeo4W Shell] on **Windows**, or through terminal on **Ubuntu** and **macOS** (see the following).
 ___
 ### Installation - Windows OS
 

@@ -338,12 +338,15 @@ class HotspotAnalysis:
         fieldnames = [field.name() for field in selectedLayer.pendingFields()]
         self.clear_fields()
         self.dlg.comboBox_C.addItems(fieldnames)
+        (path,layer_id)=selectedLayer.dataProvider().dataSourceUri().split('|')
+        thresh = pysal.min_threshold_dist_from_shapefile(path)
+        self.dlg.lineEditThreshold.setText(str(int(thresh)))
         
     def error_msg(self):
         """Message to report missing fields"""
         self.clear_ui()
         QMessageBox.warning(self.dlg.show(), self.tr("HotspotAnalysis:Warning"),self.tr("Please specify input fields properly"),QMessageBox.Ok)
-        #self.run()
+        self.run()
         
     def success_msg(self):
         """Message to report succesful file creation"""
@@ -379,6 +382,8 @@ class HotspotAnalysis:
             self.dlg.comboBox.activated.connect(lambda:self.load_comboBox(layers_shp))
             self.dlg.comboBox.currentIndexChanged.connect(lambda:self.load_comboBox(layers_shp))
             self.dlg.checkBox.toggled.connect(self.optimizedThreshold)#checkbox toggle event
+            self.load_comboBox(layers_shp)
+
         
         # show the dialog
             self.dlg.show()		

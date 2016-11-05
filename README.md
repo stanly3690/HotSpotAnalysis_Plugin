@@ -46,7 +46,7 @@ Change the directory to where the downloaded packages are stored and type the fo
  $ pip install pysal
 ```
 
-Download or clone the `Github` repository given below into QGIS Python Plugins folder.
+Download or clone the `GitHub` repository given below into QGIS Python Plugins folder.
 https://github.com/stanly3690/HotSpotAnalysis_Plugin 
 
 **Note**: default Plugins folder is:

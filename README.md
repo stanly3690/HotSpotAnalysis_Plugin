@@ -128,7 +128,7 @@ The current version **does not require Pyshp as well as to specify the feature c
 With this new version, the output layer is displayed with an **automatic style** which enables hotspot and coldspot visualization. Moreover, a **default Fixed Distance Band** is dispalyed. This latter represents the minimum distance to ensure 
 at least 1 neighbor to any point of the dataset in order to compute spatial weights for Gi* 
 
-A demo exercise with the new plugin version here: (_file under construction, contact the author for any issue_)
+A demo exercise with the new plugin version here: https://github.com/stanly3690/HotSpotAnalysis_Plugin/blob/master/test_data/Hotspot_Analysis_UserGuide.pdf
 ___
 ###Future work
 

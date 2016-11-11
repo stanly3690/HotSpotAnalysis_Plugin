@@ -350,7 +350,7 @@ class HotspotAnalysis:
         
     def success_msg(self,distance):
         """Message to report succesful file creation"""
-        QMessageBox.information(self.dlg, self.tr("HotspotAnalysis:Success"),self.tr("File is generated Succesfully - Distance used = "+ str(distance)),QMessageBox.Ok)
+        QMessageBox.information(self.dlg, self.tr("HotspotAnalysis:Success"),self.tr("File is generated Succesfully (Distance used = "+ str(distance)+")"),QMessageBox.Ok)
         
     def validator(self):
         """Validator to Check whether the inputs are given properly"""

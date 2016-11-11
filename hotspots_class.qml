@@ -32,7 +32,7 @@
   <renderer-v2 forceraster="0" symbollevels="0" type="RuleRenderer" enableorderby="0">
     <rules key="{022d0e93-b3bd-445e-847a-906a61359801}">
       <rule filter="&quot;Z-score&quot; &lt;= -2.58 AND &quot;p-value&quot; &lt;= 0.01" key="{92014674-0d51-41b9-9d49-eacccb0b9ddd}" symbol="0" label="coldspot 99% confidence"/>
-      <rule filter="&quot;Z-score&quot; &lt;= 1.96 AND &quot;Z-score&quot; > -2.58 AND &quot;p-value&quot; &lt;= 0.05 AND &quot;p-value&quot; > 0.01" key="{0972bbda-48ca-426f-b10d-3804ec63c350}" symbol="1" label="coldspot 95% confidence"/>
+      <rule filter="&quot;Z-score&quot; &lt;= -1.96 AND &quot;Z-score&quot; > -2.58 AND &quot;p-value&quot; &lt;= 0.05 AND &quot;p-value&quot; > 0.01" key="{0972bbda-48ca-426f-b10d-3804ec63c350}" symbol="1" label="coldspot 95% confidence"/>
       <rule filter="&quot;Z-score&quot; &lt;= -1.65 AND &quot;Z-score&quot; > -1.96 AND &quot;p-value&quot; &lt;= 0.1 AND &quot;p-value&quot; > 0.05" key="{4db48ebb-7475-4b80-a367-ea34a046b037}" symbol="2" label="coldspot 90% confidence"/>
       <rule filter="&quot;Z-score&quot; > -1.65 AND &quot;Z-score&quot; &lt; 1.65 AND &quot;p-value&quot; > 0.1" key="{7f29558c-fd89-4a76-a23c-742c22fb6be2}" symbol="3" label="not significant"/>
       <rule filter="&quot;Z-score&quot; >= 1.65 AND &quot;Z-score&quot; &lt; 1.96 AND &quot;p-value&quot; &lt;= 0.1 AND &quot;p-value&quot; > 0.05" key="{e207b7c2-d812-4614-8934-8efaed7e5c83}" symbol="4" label="hotspot 90% confidence"/>

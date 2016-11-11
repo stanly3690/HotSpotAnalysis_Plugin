@@ -252,7 +252,7 @@ class HotspotAnalysis:
         self.dlg.comboBox_C.clear()
         
             
-    def write_file(self,filename,sf,lg_star,field_C,C,layerName,inLayer,inDataSource):
+    def write_file(self,filename,sf,lg_star,field_C,C,layerName,inLayer,inDataSource,threshold1):
         """Writing the output shapefile into the mentioned directory"""
         outDriver = ogr.GetDriverByName("ESRI Shapefile")
         
@@ -324,7 +324,7 @@ class HotspotAnalysis:
         outDataSource.Destroy()
     
         
-        self.success_msg()
+        self.success_msg(threshold1)
         new_layer = self.iface.addVectorLayer(filename+".shp", str(os.path.basename(os.path.normpath(filename))), "ogr")
         if not new_layer:
             QMessageBox.information(self.dlg, self.tr("New Layer"),self.tr("Layer Cannot be Loaded"),QMessageBox.Ok)
@@ -348,9 +348,9 @@ class HotspotAnalysis:
         QMessageBox.warning(self.dlg.show(), self.tr("HotspotAnalysis:Warning"),self.tr("Please specify input fields properly"),QMessageBox.Ok)
         self.run()
         
-    def success_msg(self):
+    def success_msg(self,distance):
         """Message to report succesful file creation"""
-        QMessageBox.information(self.dlg, self.tr("HotspotAnalysis:Success"),self.tr("File is generated Succesfully"),QMessageBox.Ok)
+        QMessageBox.information(self.dlg, self.tr("HotspotAnalysis:Success"),self.tr("File is generated Succesfully - Distance used = "+ str(distance)),QMessageBox.Ok)
         
     def validator(self):
         """Validator to Check whether the inputs are given properly"""
@@ -436,7 +436,7 @@ class HotspotAnalysis:
                     threshold1 = int(mx_i)
                 w = DistanceBand(t,threshold1, p=2, binary=False)
                 lg_star = G_Local(y,w,transform='B',star=True)
-                self.write_file(filename,inLayer,lg_star,self.dlg.comboBox_C.currentText(),C,layerName, inLayer, inDataSource)
+                self.write_file(filename,inLayer,lg_star,self.dlg.comboBox_C.currentText(),C,layerName, inLayer, inDataSource, threshold1)
                 # assign the style to the output layer on QGIS 
                 self.iface.activeLayer().loadNamedStyle(os.path.dirname(__file__) + "/hotspots_class.qml")
             elif result and (self.validator()==0):

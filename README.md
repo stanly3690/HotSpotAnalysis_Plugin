@@ -121,7 +121,7 @@ ___
 
 An example of plugin application is available here: https://peerj.com/preprints/2204/
 
-Plese citi this as: 
+Plese cite this as: 
 
 _Oxoli D, Zurbarán MA, Shaji S, Muthusamy AK. (2016) Hotspot analysis: a first prototype Python plugin enabling exploratory spatial data analysis into QGIS. PeerJ Preprints 4:e2204v4_ https://doi.org/10.7287/peerj.preprints.2204v4
 

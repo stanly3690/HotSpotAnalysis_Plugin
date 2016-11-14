@@ -121,6 +121,9 @@ ___
 
 An example of plugin application is available here: https://peerj.com/preprints/2204/
 
+Plese citi this as: 
+Oxoli D, Zurbarán MA, Shaji S, Muthusamy AK. (2016) Hotspot analysis: a first prototype Python plugin enabling exploratory spatial data analysis into QGIS. PeerJ Preprints 4:e2204v4 https://doi.org/10.7287/peerj.preprints.2204v4
+
 **Note**: this paper is based on the **old version of the plugin**! 
 
 The current version **does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table** of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS. Nevertheless, be sure that your input shapefile is projected. The unit of measure in which you express the analysis distance must agree with the one of the projected coordinate system of your input layer. 

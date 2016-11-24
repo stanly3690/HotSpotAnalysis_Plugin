@@ -29,7 +29,7 @@ repository=https://github.com/stanly3690/HotSpotAnalysis_Plugin.git
 tags= hotspot, python, ESDA, vector, points 
 
 homepage=https://github.com/stanly3690
-category=Vector
+category=Plugins
 icon=icon.png
 # experimental flag
 experimental=True

@@ -262,19 +262,14 @@ class HotspotAnalysis:
         
         outShapefile = filename+".shp"
         
-        
-
+        # Remove exisitng output if exist
         if os.path.exists(outShapefile):
             outDriver.DeleteDataSource(outShapefile)
             
         # Create the output shapefile
         outDataSource = outDriver.CreateDataSource(outShapefile)
-    
-        
         outLayer = outDataSource.CreateLayer("output",  inLayer.GetSpatialRef(), inLayer.GetLayerDefn().GetGeomType())
     
-
-
         # Add input Layer Fields to the output Layer
         inLayerDefn = inLayer.GetLayerDefn()
         for i in range(0, inLayerDefn.GetFieldCount()):
@@ -402,8 +397,7 @@ class HotspotAnalysis:
                 inDriver = ogr.GetDriverByName("ESRI Shapefile")
                 inDataSource = inDriver.Open(path, 0)
                 inLayer = inDataSource.GetLayer()
-                
-                
+                               
                 t = ()
                 for feature in inLayer:
                     geometry = feature.GetGeometryRef()
@@ -416,8 +410,7 @@ class HotspotAnalysis:
                     u.append(geometry.GetField(C))    
                     
                 y = numpy.array(u)#point attribute
-                
-                
+                               
                 if self.dlg.checkBox.isChecked() == 0:#if threshold is given
                     threshold1 = int(self.dlg.lineEditThreshold.text())
                 else:#if user needs to optimize threshold

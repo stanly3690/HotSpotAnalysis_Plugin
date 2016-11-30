@@ -262,7 +262,7 @@ class HotspotAnalysis:
         
         outShapefile = filename+".shp"
         
-        # Remove exisitng output if exist
+        # Remove eventually alrady exisiting output 
         if os.path.exists(outShapefile):
             outDriver.DeleteDataSource(outShapefile)
             

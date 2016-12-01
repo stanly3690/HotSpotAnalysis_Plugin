@@ -6,7 +6,7 @@ The Hotspot analysis plugin associate the **Z-scores** and **p-values** (under C
 
 Positive and statistically significant Z-score indicates intense cluster of high values (hotspot). Negative and statistically significant Z-score indicates intense cluster of low values (coldspot).
 
-Spatial relation between features is modeled using a Fixed Distance Band (expressed with the same unit of measure of the projected coordinate system of the input shapefile), which allows to compute Gi* for any element by considering its neighborhoods within this fixed distance. For more information, please refer to: [Geospatial Analysis - 5th Edition, 2015 - de Smith, Goodchild, Longley]
+Spatial relation between features is modeled using a Fixed Distance Band (expressed with the same unit of measure of the projected coordinate system of the input shapefile), which allows to compute Gi* for any element by considering its neighborhoods within this fixed distance. For point shapefile this buffer distance is computed from the point location itself, for polygon shapefile this distance is computed using polygon centroid coordinates. For more information, please refer to: [Geospatial Analysis - 5th Edition, 2015 - de Smith, Goodchild, Longley]
 
 Dependency Requirements:
 

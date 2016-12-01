@@ -18,7 +18,7 @@ These libraries are not included in the QGIS core libraries and must be installe
 ___
 ### Installation - Windows OS
 
-Download `get-pip.py` ,to enable `PIP` functionalities, which is available at this link: <https://bootstrap.pypa.io/get-pip.py> 
+Download `get-pip.py` , to enable `PIP` functionalities, which is available at this link: <https://bootstrap.pypa.io/get-pip.py> 
 
 Open `OSGeo4W Shell` as `Administrator` and change the working directory where the `get-pip.py` file is stored and type :
 ```sh

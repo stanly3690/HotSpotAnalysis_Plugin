@@ -125,7 +125,7 @@ Plese cite this as:
 
 _Oxoli D, Zurbarán MA, Shaji S, Muthusamy AK. (2016) Hotspot analysis: a first prototype Python plugin enabling exploratory spatial data analysis into QGIS. PeerJ Preprints 4:e2204v4_ https://doi.org/10.7287/peerj.preprints.2204v4
 
-Presentatiin slides are available here: https://www.researchgate.net/deref/http%3A%2F%2Fwww.slideshare.net%2Fdanieleoxoli%2Fhotspot-analysis-ogrs2016
+Presentation slides are available here: https://www.researchgate.net/deref/http%3A%2F%2Fwww.slideshare.net%2Fdanieleoxoli%2Fhotspot-analysis-ogrs2016
 
 **Note**: this material is based on the **old version of the plugin**! 
 

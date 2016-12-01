@@ -2,7 +2,7 @@
 
 A QGIS Plugin to perform Hotspot analysis based on the Python Spatial Analysis Library - [PySAL]. 
 
-The Hotspot analysis plugin associate the **Z-scores** and **p-values** (under Complete Spatial Randomness hypothesis) of the Gi* local statistic ([Getis and Ord, 1992]) for each feature of a points or polygons shapefile, characterized by **a projected coordinates system** and an associated **positive numerical attribute**. Output layer enables to indentify hotspots (or coldspots) in the input dataset as well as their statistical significance. 
+The Hotspot analysis plugin associate the **Z-scores** and **p-values** (under Complete Spatial Randomness hypothesis) of the Gi* local statistic ([Getis and Ord, 1992]) for each feature of shapefile (points or polygons), with an assigned ** projected coordinates system** and an associated **positive numerical attribute**. Output layer enables to indentify hotspots (or coldspots) in the input dataset as well as their statistical significance. 
 
 Positive and statistically significant Z-score indicates intense cluster of high values (hotspot). Negative and statistically significant Z-score indicates intense cluster of low values (coldspot).
 
@@ -129,7 +129,7 @@ _Oxoli D, Zurbarán MA, Shaji S, Muthusamy AK. (2016) Hotspot analysis: a first 
 
 The current version **does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table** of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS. Nevertheless, be sure that your input shapefile is projected. The unit of measure in which you express the analysis distance must agree with the one of the projected coordinate system of your input layer. 
 
-With this new version, the output layer is displayed with an **automatic style** which enables hotspot and coldspot visualization. Moreover, a **default Fixed Distance Band** is dispalyed. This latter represents the minimum distance to ensure 
+With this new version, the output layer is displayed with an **automatic style** which enables hotspot and coldspot visualization (to points dataset only, for polygons use: ). Moreover, a **default Fixed Distance Band** is dispalyed. This latter represents the minimum distance to ensure 
 at least 1 neighbor to any element of the dataset in order to compute spatial weights for Gi* 
 
 A demo exercise with the new plugin version here: https://github.com/stanly3690/HotSpotAnalysis_Plugin/blob/master/test_data/Hotspot_Analysis_UserGuide.pdf

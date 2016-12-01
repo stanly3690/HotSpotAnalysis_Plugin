@@ -125,9 +125,11 @@ Plese cite this as:
 
 _Oxoli D, Zurbarán MA, Shaji S, Muthusamy AK. (2016) Hotspot analysis: a first prototype Python plugin enabling exploratory spatial data analysis into QGIS. PeerJ Preprints 4:e2204v4_ https://doi.org/10.7287/peerj.preprints.2204v4
 
-**Note**: this paper is based on the **old version of the plugin**! 
+Presentatiin slides are available here: https://www.researchgate.net/deref/http%3A%2F%2Fwww.slideshare.net%2Fdanieleoxoli%2Fhotspot-analysis-ogrs2016
 
-The current version **does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table** of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS. Nevertheless, be sure that your input shapefile is projected. The unit of measure in which you express the analysis distance must agree with the one of the projected coordinate system of your input layer. 
+**Note**: this material is based on the **old version of the plugin**! 
+
+The current version does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS. Nevertheless, be sure that your input shapefile is projected. The unit of measure in which you express the analysis distance must agree with the one of the projected coordinate system of your input layer. 
 
 With this new version, the output layer is displayed with an **automatic style** which enables hotspot and coldspot visualization (to points dataset only, for polygons use: ). Moreover, a **default Fixed Distance Band** is dispalyed. This latter represents the minimum distance to ensure 
 at least 1 neighbor to any element of the dataset in order to compute spatial weights for Gi* 

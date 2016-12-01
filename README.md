@@ -131,7 +131,7 @@ Presentation slides are available here: https://www.slideshare.net/mobile/daniel
 
 The current version does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS. Nevertheless, be sure that your input shapefile is projected. The unit of measure in which you express the analysis distance must agree with the one of the projected coordinate system of your input layer. 
 
-With this new version, the output layer is displayed with an **automatic style** which enables hotspot and coldspot visualization (to points dataset only, for polygons use: ). Moreover, a **default Fixed Distance Band** is dispalyed. This latter represents the minimum distance to ensure 
+With this new version, the output layer is displayed with an **automatic style** which enables hotspot and coldspot visualization. Moreover, a **default Fixed Distance Band** is dispalyed. This latter represents the minimum distance to ensure 
 at least 1 neighbor to any element of the dataset in order to compute spatial weights for Gi* 
 
 A demo exercise with the new plugin version here: https://github.com/stanly3690/HotSpotAnalysis_Plugin/blob/master/test_data/Hotspot_Analysis_UserGuide.pdf

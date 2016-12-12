@@ -237,6 +237,7 @@ class HotspotAnalysis:
         self.dlg.comboBox_C.clear()
         self.dlg.lineEditThreshold.setEnabled(True)
         self.dlg.checkBox.setChecked(False)
+        self.dlg.checkBox_2.setChecked(False)
         self.dlg.lineEdit_minT.setEnabled(False)
         self.dlg.lineEdit_maxT.setEnabled(False)
         self.dlg.lineEdit_dist.setEnabled(False)
@@ -341,7 +342,6 @@ class HotspotAnalysis:
         """Message to report missing fields"""
         self.clear_ui()
         QMessageBox.warning(self.dlg.show(), self.tr("HotspotAnalysis:Warning"),self.tr("Please specify input fields properly"),QMessageBox.Ok)
-        self.run()
         
     def success_msg(self,distance):
         """Message to report succesful file creation"""
@@ -428,6 +428,10 @@ class HotspotAnalysis:
                             mx_moran = moran.z_norm
                     threshold1 = int(mx_i)
                 w = DistanceBand(t,threshold1, p=2, binary=False)
+                if self.dlg.checkBox_2.isChecked() == 1:
+					w_type = "r"
+                else:
+					w_type = "B"
                 lg_star = G_Local(y,w,transform='B',star=True)
                 self.write_file(filename,inLayer,lg_star,self.dlg.comboBox_C.currentText(),C,layerName, inLayer, inDataSource, threshold1)
                 # assign the style to the output layer on QGIS 

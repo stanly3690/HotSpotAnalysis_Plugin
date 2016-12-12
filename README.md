@@ -141,7 +141,7 @@ With this new version, the output layer is displayed with an **automatic style**
 at least 1 neighbor to any element of the dataset in order to compute spatial weights for Gi* 
 
 #####Annuncement 12/2016
-New check botton to eneable the usage of row standardized spatial weights
+New check botton to eneable the usage of **row standardized** spatial weights
 ___
 ###Future work
 

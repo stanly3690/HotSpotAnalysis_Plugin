@@ -145,7 +145,7 @@ New check botton to eneable the usage of **row standardized** spatial weights
 ___
 ###Future work
 
-Enable user to run hotspot analysis based on polygonal grid or multipolygon shapefile
+Enable users to run hotspot analysis on polygonal grid or multipolygon shapefile
 ___
 
 Bug tracker and Wiki

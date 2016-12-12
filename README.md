@@ -119,6 +119,10 @@ In `All plugins` tab, look for `HotSpotAnalysis` and tick the Checkbox.
 A new icon for Hotspot Analysis will appear on the QGIS main panel.
 ___
 
+### Additional Material and Annuncements
+
+A demo exercise with the new plugin version here: https://github.com/stanly3690/HotSpotAnalysis_Plugin/blob/master/test_data/Hotspot_Analysis_UserGuide.pdf
+
 An example of plugin application is available here: https://peerj.com/preprints/2204/
 
 Plese cite this as: 
@@ -129,16 +133,19 @@ Presentation slides are available here: https://www.slideshare.net/mobile/daniel
 
 **Note**: this material is based on the **old version of the plugin**! 
 
+#####Annuncement 10/2016
 The current version does not require Pyshp as well as to specify the feature coordinates as two separate fields in the attribute table of the input shapefile. Only the numerical attribute must be included and selected using the graphical interface on QGIS. Nevertheless, be sure that your input shapefile is projected. The unit of measure in which you express the analysis distance must agree with the one of the projected coordinate system of your input layer. 
 
+#####Annuncement 11/2016
 With this new version, the output layer is displayed with an **automatic style** which enables hotspot and coldspot visualization. Moreover, a **default Fixed Distance Band** is dispalyed. This latter represents the minimum distance to ensure 
 at least 1 neighbor to any element of the dataset in order to compute spatial weights for Gi* 
 
-A demo exercise with the new plugin version here: https://github.com/stanly3690/HotSpotAnalysis_Plugin/blob/master/test_data/Hotspot_Analysis_UserGuide.pdf
+#####Annuncement 12/2016
+New check botton to eneable the usage of row standardized spatial weights
 ___
 ###Future work
 
-...
+Enable user to run hotspot analysis based on polygonal grid or multipolygon shapefile
 ___
 
 Bug tracker and Wiki

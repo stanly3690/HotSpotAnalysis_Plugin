@@ -147,6 +147,7 @@ ___
 
  - Enable users to run hotspot analysis on polygonal grid or multipolygon shapefile
  - Introduce Local Moran's I and Bivariate Local Moran's I computation
+ 
 ___
 
 Bug tracker and Wiki

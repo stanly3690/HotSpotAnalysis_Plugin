@@ -14,14 +14,7 @@ Dependency Requirements:
   - **`Numpy`**
   - **`Scipy`**
   
-These libraries are not all included in the QGIS core libraries and must be installed prior to the use of the plugin through the [OSGeo4W Shell] on **Windows**, or through terminal on **Ubuntu** and **macOS** (see the following).
-
-**Note**: Numpy packege it should be included yet in your deafult QGIS installation, therefore it may not be necessary to install it again. If you work under **Windows** check your system before downloading this package by opening the [OSGeo4W Shell] and typing : 
-```sh
- $ python 
- $ import numpy
-```
-if no errors will appear, Numpy has been present yet.
+These libraries not all included in the QGIS core libraries and must be installed prior to the use of the plugin through the [OSGeo4W Shell] on **Windows**, or through terminal on **Ubuntu** and **macOS** (see the following).
 ___
 ### Installation - Windows OS
 

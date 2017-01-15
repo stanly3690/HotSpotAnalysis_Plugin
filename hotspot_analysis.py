@@ -198,7 +198,7 @@ class HotspotAnalysis:
         del self.toolbar
         
     def select_output_file(self):
-        """Selects the output file directory """
+        """Selects the output file directory"""
         filename = QFileDialog.getSaveFileName(self.dlg, "Select output path directory ")
         self.dlg.lineEdit.setText(filename)
         

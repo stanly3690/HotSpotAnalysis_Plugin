@@ -253,7 +253,7 @@ class HotspotAnalysis:
         self.dlg.comboBox_C.clear()
         
             
-    def write_file(self,filename,sf,lg_star,field_C,C,layerName,inLayer,inDataSource,threshold1):
+    def write_file(self,filename,sf,lg_star,field_C,C,layerName,inLayer,inDataSource,threshold1,y):
         """Writing the output shapefile into the mentioned directory"""
         outDriver = ogr.GetDriverByName("ESRI Shapefile")
         
@@ -310,8 +310,12 @@ class HotspotAnalysis:
             geom = inFeature.GetGeometryRef()
             outFeature.SetGeometry(geom)
             # Add Z-scores and p-values to their field column 
-            outFeature.SetField("Z-score", lg_star.z_sim[i])
-            outFeature.SetField("p-value", lg_star.p_z_sim[i]*2)
+            if min(y) >= 0:
+                outFeature.SetField("Z-score", lg_star.Zs[i])
+                outFeature.SetField("p-value", lg_star.p_norm[i]*2)
+            else:
+                outFeature.SetField("Z-score", -lg_star.Zs[i])
+                outFeature.SetField("p-value", lg_star.p_norm[i]*2)
             # Add new feature to output Layer
             outLayer.CreateFeature(outFeature)
 
@@ -433,7 +437,7 @@ class HotspotAnalysis:
                 else:
 					w_type = "B"
                 lg_star = G_Local(y,w,transform='B',star=True)
-                self.write_file(filename,inLayer,lg_star,self.dlg.comboBox_C.currentText(),C,layerName, inLayer, inDataSource, threshold1)
+                self.write_file(filename,inLayer,lg_star,self.dlg.comboBox_C.currentText(),C,layerName, inLayer, inDataSource, threshold1,y)
                 # assign the style to the output layer on QGIS 
                 self.iface.activeLayer().loadNamedStyle(os.path.dirname(__file__) + "/hotspots_class.qml")
             elif result and (self.validator()==0):

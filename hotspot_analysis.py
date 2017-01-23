@@ -367,11 +367,12 @@ class HotspotAnalysis:
         layers = self.iface.legendInterface().layers()
         if len(layers)!=0:#checklayers exist in the project
             for layer in layers:
-                myfilepath= layer.dataProvider().dataSourceUri() #directory including filename
-                (myDirectory,nameFile) = os.path.split(myfilepath)#splitting into directory and filename
-                if (".shp" in nameFile):
-                    layers_list.append(layer.name())
-                    layers_shp.append(layer)
+                if hasattr(layer,"dataProvider"):
+                    myfilepath= layer.dataProvider().dataSourceUri() #directory including filename
+                    (myDirectory,nameFile) = os.path.split(myfilepath)#splitting into directory and filename
+                    if (".shp" in nameFile):
+                        layers_list.append(layer.name())
+                        layers_shp.append(layer)
             self.dlg.comboBox.addItems(layers_list)#adding layers to comboBox
             selectedLayerIndex = self.dlg.comboBox.currentIndex()
             selectedLayer = layers_shp[selectedLayerIndex]

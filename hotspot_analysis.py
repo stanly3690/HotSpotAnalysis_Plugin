@@ -367,7 +367,7 @@ class HotspotAnalysis:
         layers = self.iface.legendInterface().layers()
         if len(layers)!=0:#checklayers exist in the project
             for layer in layers:
-                if hasattr(layer,"dataProvider"):
+                if hasattr(layer,"dataProvider"): # to not consider Openlayers basemaps in the layer list
                     myfilepath= layer.dataProvider().dataSourceUri() #directory including filename
                     (myDirectory,nameFile) = os.path.split(myfilepath)#splitting into directory and filename
                     if (".shp" in nameFile):

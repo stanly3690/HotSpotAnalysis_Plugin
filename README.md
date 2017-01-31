@@ -152,6 +152,7 @@ ___
 ###Future work
 
  - Introduce Local Moran's I and Bivariate Local Moran's I computation
+ - Update User guide 
  
 ___
 

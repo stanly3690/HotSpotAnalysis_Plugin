@@ -37,13 +37,21 @@ from pysal.weights.Distance import DistanceBand
 import numpy
 import sys
 
-from osgeo import ogr, gdal 
+from osgeo import ogr, gdal
+
+type = 0  # geometry type: 1 point, 3 polygon
 
 
 class NullWriter(object):
     def write(self, value): pass
 
+
 sys.stdout = sys.stderr = NullWriter()
+
+
+def pr(self, msg):
+    QMessageBox.information(self.iface.mainWindow(), "Debug", msg)
+
 
 class HotspotAnalysis:
     """QGIS Plugin Implementation."""
@@ -103,18 +111,17 @@ class HotspotAnalysis:
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
         return QCoreApplication.translate('HotspotAnalysis', message)
 
-
     def add_action(
-        self,
-        icon_path,
-        text,
-        callback,
-        enabled_flag=True,
-        add_to_menu=True,
-        add_to_toolbar=True,
-        status_tip=None,
-        whats_this=None,
-        parent=None):
+            self,
+            icon_path,
+            text,
+            callback,
+            enabled_flag=True,
+            add_to_menu=True,
+            add_to_toolbar=True,
+            status_tip=None,
+            whats_this=None,
+            parent=None):
         """Add a toolbar icon to the toolbar.
 
         :param icon_path: Path to the icon for this action. Can be a resource
@@ -186,7 +193,7 @@ class HotspotAnalysis:
             text=self.tr(u'Generate Data for Hotspot Analysis'),
             callback=self.run,
             parent=self.iface.mainWindow())
-            
+
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
@@ -196,13 +203,13 @@ class HotspotAnalysis:
             self.iface.removeToolBarIcon(action)
         # remove the toolbar
         del self.toolbar
-        
+
     def select_output_file(self):
         """Selects the output file directory"""
         filename = QFileDialog.getSaveFileName(self.dlg, "Select output path directory ")
         self.dlg.lineEdit.setText(filename)
-        
-    def optimizedThreshold(self,checked):
+
+    def optimizedThreshold(self, checked):
         """Settings for Optimized threshold"""
         if checked == True:
             self.dlg.lineEdit_minT.setEnabled(True)
@@ -214,9 +221,8 @@ class HotspotAnalysis:
             self.dlg.label_7.setEnabled(True)
             self.dlg.label_8.setEnabled(True)
             self.dlg.label_9.setEnabled(True)
-        
+
         else:
-            threshold = self.dlg.lineEditThreshold.text()
             self.dlg.lineEdit_minT.setEnabled(False)
             self.dlg.lineEdit_minT.clear()
             self.dlg.lineEdit_maxT.clear()
@@ -228,7 +234,14 @@ class HotspotAnalysis:
             self.dlg.label_7.setEnabled(False)
             self.dlg.label_8.setEnabled(False)
             self.dlg.label_9.setEnabled(False)
-        
+
+    def randomPerm(self, checked):
+        """Settings for Random permutations"""
+        if checked == True:
+            self.dlg.lineEdit_random.setEnabled(True)
+        else:
+            self.dlg.lineEdit_random.setEnabled(False)
+
     def clear_ui(self):
         """Clearing the UI for new operations"""
         self.dlg.comboBox.clear()
@@ -236,8 +249,11 @@ class HotspotAnalysis:
         self.dlg.lineEditThreshold.clear()
         self.dlg.comboBox_C.clear()
         self.dlg.lineEditThreshold.setEnabled(True)
-        self.dlg.checkBox.setChecked(False)
-        self.dlg.checkBox_2.setChecked(False)
+        self.dlg.checkBox_optimizeDistance.setChecked(False)
+        self.dlg.checkBox_rowStandard.setChecked(False)
+        self.dlg.checkBox_randomPerm.setChecked(False)
+        self.dlg.checkBox_queen.setChecked(False)
+        self.dlg.checkBox_queen.setEnabled(False)
         self.dlg.lineEdit_minT.setEnabled(False)
         self.dlg.lineEdit_maxT.setEnabled(False)
         self.dlg.lineEdit_dist.setEnabled(False)
@@ -247,30 +263,29 @@ class HotspotAnalysis:
         self.dlg.label_7.setEnabled(False)
         self.dlg.label_8.setEnabled(False)
         self.dlg.label_9.setEnabled(False)
-        
+
     def clear_fields(self):
         """Clearing the fields when layers are changed"""
         self.dlg.comboBox_C.clear()
-        
-            
-    def write_file(self,filename,sf,lg_star,field_C,C,layerName,inLayer,inDataSource,threshold1,y):
+
+    def write_file(self, filename, sf, lg_star, field_C, C, layerName, inLayer, inDataSource, y, threshold1):
         """Writing the output shapefile into the mentioned directory"""
         outDriver = ogr.GetDriverByName("ESRI Shapefile")
-        
-        layerName=layerName.split('.')
+
+        layerName = layerName.split('.')
         layerName.pop()
-        layerName='.'.join(layerName)	
-        
-        outShapefile = filename+".shp"
-        
+        # layerName = '.'.join(layerName)
+
+        outShapefile = filename + ".shp"
+
         # Remove eventually alrady exisiting output 
         if os.path.exists(outShapefile):
             outDriver.DeleteDataSource(outShapefile)
-            
+
         # Create the output shapefile
         outDataSource = outDriver.CreateDataSource(outShapefile)
-        outLayer = outDataSource.CreateLayer("output",  inLayer.GetSpatialRef(), inLayer.GetLayerDefn().GetGeomType())
-    
+        outLayer = outDataSource.CreateLayer("output", inLayer.GetSpatialRef(), inLayer.GetLayerDefn().GetGeomType())
+
         # Add input Layer Fields to the output Layer
         inLayerDefn = inLayer.GetLayerDefn()
         for i in range(0, inLayerDefn.GetFieldCount()):
@@ -295,7 +310,7 @@ class HotspotAnalysis:
         # Get the output Layer's Feature Definition
         outLayerDefn = outLayer.GetLayerDefn()
         # Get the input Layer's Feature Definition
-        inLayerDefn  = inLayer.GetLayerDefn()
+        inLayerDefn = inLayer.GetLayerDefn()
 
         # Add features to the ouput Layer
         for i in range(0, inLayer.GetFeatureCount()):
@@ -309,142 +324,224 @@ class HotspotAnalysis:
             # Set geometry
             geom = inFeature.GetGeometryRef()
             outFeature.SetGeometry(geom)
-            # Add Z-scores and p-values to their field column 
-            if min(y) >= 0:
-                outFeature.SetField("Z-score", lg_star.Zs[i])
-                outFeature.SetField("p-value", lg_star.p_norm[i]*2)
-            else:
-                outFeature.SetField("Z-score", -lg_star.Zs[i])
-                outFeature.SetField("p-value", lg_star.p_norm[i]*2)
+
+            # Add Z-scores and p-values to their field column
+            if self.dlg.checkBox_randomPerm.isChecked() == 1:  # to use permutation approach
+                if min(y) >= 0:
+                    outFeature.SetField("Z-score", lg_star.z_sim[i])
+                    outFeature.SetField("p-value", lg_star.p_z_sim[i] * 2)
+                else:
+                    outFeature.SetField("Z-score", -lg_star.z_sim[i])
+                    outFeature.SetField("p-value", lg_star.p_z_sim[i] * 2)
+
+            else:  # to use normality hypothesis
+
+                if min(y) >= 0:
+                    outFeature.SetField("Z-score", lg_star.Zs[i])
+                    outFeature.SetField("p-value", lg_star.p_norm[i] * 2)
+                else:
+                    outFeature.SetField("Z-score", -lg_star.Zs[i])
+                    outFeature.SetField("p-value", lg_star.p_norm[i] * 2)
             # Add new feature to output Layer
             outLayer.CreateFeature(outFeature)
 
         # Close DataSources
         inDataSource.Destroy()
         outDataSource.Destroy()
-    
-        
-        self.success_msg(threshold1)
-        new_layer = self.iface.addVectorLayer(filename+".shp", str(os.path.basename(os.path.normpath(filename))), "ogr")
+        if threshold1:
+            self.success_msg(threshold1)
+        new_layer = self.iface.addVectorLayer(filename + ".shp", str(os.path.basename(os.path.normpath(filename))),
+                                              "ogr")
         if not new_layer:
-            QMessageBox.information(self.dlg, self.tr("New Layer"),self.tr("Layer Cannot be Loaded"),QMessageBox.Ok)
-        self.clear_ui() 
-        
-    def load_comboBox(self,layers):
+            QMessageBox.information(self.dlg, self.tr("New Layer"), self.tr("Layer Cannot be Loaded"), QMessageBox.Ok)
+        self.clear_ui()
+
+    def load_comboBox(self, layers):
         """Load the fields into combobox when layers are changed"""
+
         selectedLayerIndex = self.dlg.comboBox.currentIndex()
-        selectedLayer = layers[selectedLayerIndex]
-        fieldnames = []
+
+        if selectedLayerIndex < 0 or selectedLayerIndex > len(layers):
+            return
+        try:
+            selectedLayer = layers[selectedLayerIndex]
+        except:
+            return
+
         fieldnames = [field.name() for field in selectedLayer.pendingFields()]
+
         self.clear_fields()
         self.dlg.comboBox_C.addItems(fieldnames)
-        (path,layer_id)=selectedLayer.dataProvider().dataSourceUri().split('|')
-        thresh = pysal.min_threshold_dist_from_shapefile(path)
-        self.dlg.lineEditThreshold.setText(str(int(thresh)))
-        
+        (path, layer_id) = selectedLayer.dataProvider().dataSourceUri().split('|')
+
+        inDriver = ogr.GetDriverByName("ESRI Shapefile")
+        inDataSource = inDriver.Open(path, 0)
+        inLayer = inDataSource.GetLayer()
+        global type
+        type = inLayer.GetLayerDefn().GetGeomType()
+
+        if type == 3:  # is a polygon
+            self.dlg.checkBox_queen.setChecked(True)
+            self.dlg.lineEditThreshold.setEnabled(False)
+            self.dlg.checkBox_optimizeDistance.setChecked(False)
+            self.dlg.checkBox_optimizeDistance.setEnabled(False)
+            self.dlg.lineEdit_minT.setEnabled(False)
+            self.dlg.lineEdit_maxT.setEnabled(False)
+            self.dlg.lineEdit_dist.setEnabled(False)
+
+        else:
+            self.dlg.checkBox_queen.setChecked(False)
+            self.dlg.lineEditThreshold.setEnabled(True)
+            self.dlg.checkBox_optimizeDistance.setEnabled(True)
+            self.dlg.lineEdit_minT.setEnabled(True)
+            self.dlg.lineEdit_dist.setEnabled(True)
+            self.dlg.lineEdit_maxT.setEnabled(True)
+            thresh = pysal.min_threshold_dist_from_shapefile(path)
+            self.dlg.lineEditThreshold.setText(str(int(thresh)))
+
     def error_msg(self):
         """Message to report missing fields"""
         self.clear_ui()
-        QMessageBox.warning(self.dlg.show(), self.tr("HotspotAnalysis:Warning"),self.tr("Please specify input fields properly"),QMessageBox.Ok)
-        
-    def success_msg(self,distance):
+        QMessageBox.warning(self.dlg.show(), self.tr("HotspotAnalysis:Warning"),
+                            self.tr("Please specify input fields properly"), QMessageBox.Ok)
+
+    def success_msg(self, distance):
         """Message to report succesful file creation"""
-        QMessageBox.information(self.dlg, self.tr("HotspotAnalysis:Success"),self.tr("File is generated Succesfully (Distance used = "+ str(distance)+")"),QMessageBox.Ok)
-        
+        QMessageBox.information(self.dlg, self.tr("HotspotAnalysis:Success"),
+                                self.tr("File is generated Succesfully (Distance used = " + str(distance) + ")"),
+                                QMessageBox.Ok)
+
     def validator(self):
         """Validator to Check whether the inputs are given properly"""
-        if ((self.dlg.checkBox.isChecked() == 0 and self.dlg.lineEditThreshold.text() != "") or (self.dlg.checkBox.isChecked() == 1 and (self.dlg.lineEdit_dist.text() != "" and self.dlg.lineEdit_maxT.text() != "" and self.dlg.lineEdit_minT.text() != "" ))) and self.dlg.lineEdit.text()!="":
+        global type
+
+        if type == 3:
+            self.dlg.checkBox_queen.setChecked(True)
+            return 1
+
+        if ((self.dlg.checkBox_optimizeDistance.isChecked() == 0
+             and self.dlg.lineEditThreshold.text() != "")
+            or (self.dlg.checkBox_optimizeDistance.isChecked() == 1
+                and (self.dlg.lineEdit_dist.text() != ""
+                     and self.dlg.lineEdit_maxT.text() != ""
+                     and self.dlg.lineEdit_minT.text() != ""))) \
+                and self.dlg.lineEdit.text() != "":
             return 1
         else:
             return 0
-            
+
     def run(self):
         """Run method that performs all the real work"""
-        self.clear_ui() 
+        self.clear_ui()
         layers_list = []
         layers_shp = []
-        #Show the shapefiles in the COmboBox
+        # Show the shapefiles in the ComboBox
         layers = self.iface.legendInterface().layers()
-        if len(layers)!=0:#checklayers exist in the project
+        if len(layers) != 0:  # checklayers exist in the project
             for layer in layers:
-                if hasattr(layer,"dataProvider"): # to not consider Openlayers basemaps in the layer list
-                    myfilepath= layer.dataProvider().dataSourceUri() #directory including filename
-                    (myDirectory,nameFile) = os.path.split(myfilepath)#splitting into directory and filename
+                if hasattr(layer, "dataProvider"):  # to not consider Openlayers basemaps in the layer list
+                    myfilepath = layer.dataProvider().dataSourceUri()  # directory including filename
+                    (myDirectory, nameFile) = os.path.split(myfilepath)  # splitting into directory and filename
                     if (".shp" in nameFile):
                         layers_list.append(layer.name())
                         layers_shp.append(layer)
-            self.dlg.comboBox.addItems(layers_list)#adding layers to comboBox
+            self.dlg.comboBox.addItems(layers_list)  # adding layers to comboBox
             selectedLayerIndex = self.dlg.comboBox.currentIndex()
+            if selectedLayerIndex < 0 or selectedLayerIndex > len(layers_shp):
+                return
             selectedLayer = layers_shp[selectedLayerIndex]
-            fieldnames = [field.name() for field in selectedLayer.pendingFields()]#fetching fieldnames of layer
+            fieldnames = [field.name() for field in selectedLayer.pendingFields()]  # fetching fieldnames of layer
             self.clear_fields()
             self.dlg.comboBox_C.addItems(fieldnames)
-            self.dlg.comboBox.activated.connect(lambda:self.load_comboBox(layers_shp))
-            self.dlg.comboBox.currentIndexChanged.connect(lambda:self.load_comboBox(layers_shp))
-            self.dlg.checkBox.toggled.connect(self.optimizedThreshold)#checkbox toggle event
-            self.load_comboBox(layers_shp)
+            try:
+                self.dlg.comboBox.activated.connect(lambda: self.load_comboBox(layers_shp))
+                self.dlg.comboBox.currentIndexChanged.connect(lambda: self.load_comboBox(layers_shp))
+                self.dlg.checkBox_optimizeDistance.toggled.connect(self.optimizedThreshold)  # checkbox toggle event
+                self.dlg.checkBox_randomPerm.toggled.connect(self.randomPerm)  # checkbox toggle event
 
-        
-        # show the dialog
-            self.dlg.show()		
-        # Run the dialog event loop
+                self.load_comboBox(layers_shp)
+            except:
+                return
+
+            # show the dialog
+            self.dlg.show()
+            # Run the dialog event loop
             result = self.dlg.exec_()
-        # See if OK was pressed and fields are not empty
-            if result and (self.validator()==1):
+            # See if OK was pressed and fields are not empty
+            if result and (self.validator() == 1):
                 selectedLayerIndex = self.dlg.comboBox.currentIndex()
+                if selectedLayerIndex < 0 or selectedLayerIndex > len(layers):
+                    return
                 selectedLayer = layers_shp[selectedLayerIndex]
                 layerName = selectedLayer.dataProvider().dataSourceUri()
                 C = selectedLayer.fieldNameIndex(self.dlg.comboBox_C.currentText())
                 filename = self.dlg.lineEdit.text()
-                (path,layer_id) = layerName.split('|')
-            
-                
+                (path, layer_id) = layerName.split('|')
+
                 inDriver = ogr.GetDriverByName("ESRI Shapefile")
                 inDataSource = inDriver.Open(path, 0)
                 inLayer = inDataSource.GetLayer()
-                               
-                t = ()
-                for feature in inLayer:
-                    geometry = feature.GetGeometryRef()
-                    xy= (geometry.GetX(), geometry.GetY())
-                    t = t+ (xy,)
-                
-                u=[] 
+                type = inLayer.GetLayerDefn().GetGeomType()
+
+                u = []
                 for i in range(0, inLayer.GetFeatureCount()):
                     geometry = inLayer.GetFeature(i)
-                    u.append(geometry.GetField(C))    
-                    
-                y = numpy.array(u)#point attribute
-                               
-                if self.dlg.checkBox.isChecked() == 0:#if threshold is given
-                    threshold1 = int(self.dlg.lineEditThreshold.text())
-                else:#if user needs to optimize threshold
-                    mx_moran = -1000.0
-                    mx_i = -1000.0
-                    minT = int(self.dlg.lineEdit_minT.text())
-                    maxT = int(self.dlg.lineEdit_maxT.text())
-                    dist = int(self.dlg.lineEdit_dist.text())
-                    for i in range(minT, maxT, dist):
-                        w = DistanceBand(t,threshold=i, p=2, binary=False)
-                        moran = pysal.Moran(y, w)
-                            #print moran.z_norm
-                        if moran.z_norm > mx_moran:
-                            mx_i = i
-                            mx_moran = moran.z_norm
-                    threshold1 = int(mx_i)
-                w = DistanceBand(t,threshold1, p=2, binary=False)
-                if self.dlg.checkBox_2.isChecked() == 1:
-					w_type = "r"
+                    u.append(geometry.GetField(C))
+
+                y = numpy.array(u)  # attributes vector
+
+                if type == 1:  # point
+                    t = ()
+                    for feature in inLayer:
+                        geometry = feature.GetGeometryRef()
+                        xy = (geometry.GetX(), geometry.GetY())
+                        t = t + (xy,)
+                    if self.dlg.checkBox_optimizeDistance.isChecked() == 0:  # if threshold is given
+                        threshold1 = int(self.dlg.lineEditThreshold.text())
+                    else:  # if user needs to optimize threshold
+                        mx_moran = -1000.0
+                        mx_i = -1000.0
+                        minT = int(self.dlg.lineEdit_minT.text())
+                        maxT = int(self.dlg.lineEdit_maxT.text())
+                        dist = int(self.dlg.lineEdit_dist.text())
+                        for i in range(minT, maxT, dist):
+                            w = DistanceBand(t, threshold=i, p=2, binary=False)
+                            moran = pysal.Moran(y, w)
+                            # print moran.z_norm
+                            if moran.z_norm > mx_moran:
+                                mx_i = i
+                                mx_moran = moran.z_norm
+                        threshold1 = int(mx_i)
+
+                    w = DistanceBand(t, threshold1, p=2, binary=False)
+                else:  # polygon
+                    w = pysal.queen_from_shapefile(myfilepath.split("|")[0])
+                    threshold1 = "None/Queen's Case used"
+                if self.dlg.checkBox_rowStandard.isChecked() == 1:
+                    type_w = "R"
                 else:
-					w_type = "B"
-                lg_star = G_Local(y,w,transform='B',star=True)
-                self.write_file(filename,inLayer,lg_star,self.dlg.comboBox_C.currentText(),C,layerName, inLayer, inDataSource, threshold1,y)
-                # assign the style to the output layer on QGIS 
-                self.iface.activeLayer().loadNamedStyle(os.path.dirname(__file__) + "/hotspots_class.qml")
-            elif result and (self.validator()==0):
+                    type_w = "B"
+
+                if self.dlg.checkBox_randomPerm.isChecked() == 1:
+                    permutationsValue = int(self.dlg.lineEdit_random.text())
+                else:
+                    permutationsValue = 999
+
+                numpy.random.seed(12345)
+                lg_star = G_Local(y, w, star=True, transform=type_w, permutations=permutationsValue)
+
+                self.write_file(filename, inLayer, lg_star, self.dlg.comboBox_C.currentText(), C, layerName, inLayer,
+                                inDataSource,
+                                y, threshold1)
+                # assign the style to the output layer on QGIS
+                if type == 1:  # point
+                    stylePath = "/hotspots_class.qml"
+                else:
+                    stylePath = "/hotspots_class_poly.qml"
+                self.iface.activeLayer().loadNamedStyle(os.path.dirname(__file__) + stylePath)
+
+            elif result and (self.validator() == 0):
                 self.error_msg()
             else:
                 self.clear_ui()
-                pass
-              
-                     
+            pass

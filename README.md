@@ -151,7 +151,6 @@ The current version does not require Pyshp as well as to specify the feature coo
 ___
 ###Future work
 
- - Enable users to run hotspot analysis on polygonal grid or multipolygon shapefile
  - Introduce Local Moran's I and Bivariate Local Moran's I computation
  
 ___

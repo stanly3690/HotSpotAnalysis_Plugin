@@ -134,7 +134,7 @@ Presentation slides are available here: https://www.slideshare.net/mobile/daniel
 **Note**: this material is based on the **old version of the plugin**! 
 
 #####Annuncement 01/2017
-- Enable the use of negative numerical attributes [Getis and Ord, 1996] 
+- Enabled the use of negative numerical attributes [Getis and Ord, 1996] 
 - Enabled polygon shapefiles as input using Queen's case contiguity spatial weight matrix. 
 - Enabled the possibility of selecting between normality assumption (default) and standard normal approximation from permutations to compute Gi* Z-scores and associated p-values. 
 

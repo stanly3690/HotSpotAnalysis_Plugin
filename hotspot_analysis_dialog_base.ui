@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>407</height>
+    <height>515</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>370</y>
+     <y>480</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -69,7 +69,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>330</y>
+     <y>440</y>
      <width>131</width>
      <height>16</height>
     </rect>
@@ -95,7 +95,7 @@
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>330</y>
+     <y>440</y>
      <width>71</width>
      <height>21</height>
     </rect>
@@ -114,7 +114,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox">
+  <widget class="QCheckBox" name="checkBox_optimizeDistance">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -232,31 +232,10 @@
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>330</y>
+     <y>440</y>
      <width>161</width>
      <height>20</height>
     </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="layer_label_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>40</y>
-     <width>111</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>9</pointsize>
-     <weight>50</weight>
-     <italic>false</italic>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>(Point shapefile)</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -297,7 +276,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>270</y>
+     <y>280</y>
      <width>401</width>
      <height>16</height>
     </rect>
@@ -310,7 +289,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>300</y>
+     <y>370</y>
      <width>401</width>
      <height>16</height>
     </rect>
@@ -319,17 +298,75 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox_2">
+  <widget class="QCheckBox" name="checkBox_rowStandard">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>280</y>
+     <y>330</y>
      <width>301</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
     <string>Use row standardized spatial weights</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_randomPerm">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>350</y>
+     <width>271</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Use random permutations</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_queen">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>290</y>
+     <width>301</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Use Queen's case contiguity matrix</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line_4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>310</y>
+     <width>401</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_random">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>350</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>999</string>
    </property>
   </widget>
  </widget>

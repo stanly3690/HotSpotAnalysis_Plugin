@@ -6,7 +6,7 @@ The Hotspot analysis plugin associate the **Z-scores** and **p-values** (under C
 
 Positive and statistically significant Z-score indicates intense cluster of high values (hotspot). Negative and statistically significant Z-score indicates intense cluster of low values (coldspot).
 
-Spatial relation between features is modeled using a Fixed Distance Band (expressed with the same unit of measure of the projected coordinate system of the input point shapefile), which allows to compute Gi* for any element by considering its neighborhoods within this fixed distance. For polygon shapefile analysis the spatial relation is modeled using Queen's case contiguity matrix. For more information, please refer to: [Geospatial Analysis - 5th Edition, 2015 - de Smith, Goodchild, Longley]
+Spatial relation between features is modeled using a Fixed Distance Band (expressed with the same unit of measure of the projected coordinate system of the input point shapefile), which allows to compute Gi* for any element by considering its neighborhoods within this fixed distance. For polygon shapefile analysis the spatial relation is modeled using queen's case contiguity matrix. For more information, please refer to: [Geospatial Analysis - 5th Edition, 2015 - de Smith, Goodchild, Longley]
 
 Dependency Requirements:
 
@@ -135,7 +135,7 @@ Presentation slides are available here: https://www.slideshare.net/mobile/daniel
 
 #####Annuncement 01/2017
 - Enabled the use of negative numerical attributes [Getis and Ord, 1996] 
-- Enabled polygon shapefiles as input using Queen's case contiguity spatial weight matrix. 
+- Enabled polygon shapefiles as input using queen's case contiguity spatial weight matrix. 
 - Enabled the possibility of selecting between normality assumption (default) and standard normal approximation from permutations to compute Gi* Z-scores and associated p-values. 
 
 #####Annuncement 12/2016

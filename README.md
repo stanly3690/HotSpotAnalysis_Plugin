@@ -2,11 +2,11 @@
 
 A QGIS Plugin to perform Hotspot analysis based on the Python Spatial Analysis Library - [PySAL]. 
 
-The Hotspot analysis plugin associate the **Z-scores** and **p-values** (under Complete Spatial Randomness hypothesis) of the Gi* local statistic ([Getis and Ord, 1992]) for each feature of shapefile (points), with an assigned **projected coordinate system** and an associated **positive numerical attribute**. Output layer enables to indentify hotspots (or coldspots) in the input dataset as well as their statistical significance. 
+The Hotspot analysis plugin associate the **Z-scores** and **p-values** (under Complete Spatial Randomness hypothesis) of the Gi* local statistic ([Getis and Ord, 1992]; [Getis and Ord, 1996]) for each feature of shapefile (points), with an assigned **projected coordinate system** and an associated **numerical attribute**. Output layer enables to indentify hotspots (or coldspots) in the input dataset as well as their statistical significance. 
 
 Positive and statistically significant Z-score indicates intense cluster of high values (hotspot). Negative and statistically significant Z-score indicates intense cluster of low values (coldspot).
 
-Spatial relation between features is modeled using a Fixed Distance Band (expressed with the same unit of measure of the projected coordinate system of the input shapefile), which allows to compute Gi* for any element by considering its neighborhoods within this fixed distance. For more information, please refer to: [Geospatial Analysis - 5th Edition, 2015 - de Smith, Goodchild, Longley]
+Spatial relation between features is modeled using a Fixed Distance Band (expressed with the same unit of measure of the projected coordinate system of the input point shapefile), which allows to compute Gi* for any element by considering its neighborhoods within this fixed distance. For polygon shapefile analysis the spatial relation is modeled using Queen's case contiguity matrix. For more information, please refer to: [Geospatial Analysis - 5th Edition, 2015 - de Smith, Goodchild, Longley]
 
 Dependency Requirements:
 
@@ -133,6 +133,11 @@ Presentation slides are available here: https://www.slideshare.net/mobile/daniel
 
 **Note**: this material is based on the **old version of the plugin**! 
 
+#####Annuncement 01/2017
+- Enable the use of negative numerical attributes [Getis and Ord, 1996] 
+- Enabled polygon shapefiles as input using Queen's case contiguity spatial weight matrix. 
+- Enabled the possibility of slecting between normality assumption (default) and standard normal approximation for permutation   for the computation of Gi* Z-scores and associated p-values. 
+
 #####Annuncement 12/2016
 New check botton to eneable the usage of **row standardized** spatial weights
 
@@ -165,3 +170,4 @@ E-mail: daniele.oxoli@polimi.it
  [Getis and Ord, 1992]: <http://onlinelibrary.wiley.com/doi/10.1111/j.1538-4632.1992.tb00261.x/full>
  [Geospatial Analysis - 5th Edition, 2015 - de Smith, Goodchild, Longley]: <http://www.spatialanalysisonline.com/HTML/index.html?local_indicators_of_spatial_as.htm>
  [OSGeo4W Shell]:<http://trac.osgeo.org/osgeo4w/>
+ [Getis and Ord, 1996]: <http://onlinelibrary.wiley.com/doi/10.1111/j.1538-4632.1995.tb00912.x/pdf>

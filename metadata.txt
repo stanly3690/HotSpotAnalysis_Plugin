@@ -14,7 +14,7 @@ version=0.1
 author=Stanly Shaji, Arunkumar, Daniele Oxoli, Mayra Zurbaràn / Politecnico Di Milano 
 email=stanly.shaji@mail.polimi.it, daniele.oxoli@polimi.it
 
-about= The Plugin implement Getis-Ord Gi* local statistic to perform Hotspot analysis. The plugin requires Scipy and Numpy (see repository for installation) 
+about= The Plugin implements Getis-Ord Gi* local statistic to perform Hotspot analysis. The plugin requires Scipy and Numpy (see repository for installation) 
 
 tracker=https://github.com/stanly3690/HotSpotAnalysis_Plugin/issues
 repository=https://github.com/stanly3690/HotSpotAnalysis_Plugin.git

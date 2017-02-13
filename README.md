@@ -41,7 +41,7 @@ Download the following packages according to your Python version and your Operat
 
  `Scipy` : https://pypi.anaconda.org/carlkl/simple/scipy/ 
  
-**Note**: Default Python version for `OSGeo4W Shell` is 2.7, select the correct packages accordling to your Operating System, for example: the filename "numpy-1.10.0b1-cp27-none-win_amd64.whl" cp27, amd64 depicts python 2.7 and 64 bit Operating System
+**Note**: _Default Python version for `OSGeo4W Shell` is 2.7, select the correct packages accordling to your Operating System, for example: the filename "numpy-1.10.0b1-cp27-none-win_amd64.whl" cp27, amd64 depicts python 2.7 and 64 bit Operating System_
 
 Change the directory to where the downloaded packages are stored and type the following commands:
 

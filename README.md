@@ -2,7 +2,7 @@
 
 A QGIS Plugin to perform Hotspot analysis based on the Python Spatial Analysis Library - [PySAL]. 
 
-The Hotspot analysis plugin associate the **Z-scores** and **p-values** (under Complete Spatial Randomness hypothesis) of the Gi* local statistic ([Getis and Ord, 1992]; [Getis and Ord, 1996]) for each feature of shapefile (points), with an assigned **projected coordinate system** and an associated **numerical attribute**. Output layer enables to indentify hotspots (or coldspots) in the input dataset as well as their statistical significance. 
+The Hotspot analysis plugin associates the **Z-scores** and **p-values** (under Complete Spatial Randomness hypothesis) of the Gi* local statistic ([Getis and Ord, 1992]; [Getis and Ord, 1996]) for each feature of shapefile, with an assigned **projected coordinate system** and an associated **numerical attribute**. Output layer allows to indentify hotspots (or coldspots) in the input dataset as well as their statistical significance. 
 
 Positive and statistically significant Z-score indicates intense cluster of high values (hotspot). Negative and statistically significant Z-score indicates intense cluster of low values (coldspot).
 
@@ -18,7 +18,7 @@ These libraries are not included in the QGIS core libraries and must be installe
 ___
 ### Installation - Windows OS
 
-Open `OSGeo4W Shell` as `Administrator` and type:
+1) Open `OSGeo4W Shell` as `Administrator` and type:
 ```sh
  $ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
  $ python get-pip.py
@@ -35,7 +35,7 @@ Further information regarding `PIP` installation can be found in:
 - https://trac.osgeo.org/osgeo4w/wiki/ExternalPythonPackages 
 - https://packaging.python.org/en/latest/installing/#install-pip-setuptools-and-wheel
 
-Download the following packages according to your Python version and your Operating System characteristics:
+2) Download the following packages according to your Python version and your Operating System characteristics:
  
  `Numpy` : https://pypi.anaconda.org/carlkl/simple/numpy/ 
 
@@ -54,7 +54,7 @@ Change the directory to where the downloaded packages are stored and type the fo
  $ pip install pysal
 ```
 
-Download or clone the `GitHub` repository given below into QGIS Python Plugins folder:
+3) Download or clone the `GitHub` repository given below into QGIS Python Plugins folder:
 https://github.com/stanly3690/HotSpotAnalysis_Plugin/archive/master.zip
 
 **Note**: default Plugins folder is:
@@ -87,7 +87,7 @@ Clone the `GitHub` repository into the earlier mentioned path:
 ```sh
  $  sudo git clone https://github.com/stanly3690/HotSpotAnalysis_Plugin 
 ```
-Then Open QGIS:
+4) Open QGIS:
 
 Go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
 

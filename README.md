@@ -61,7 +61,7 @@ https://github.com/stanly3690/HotSpotAnalysis_Plugin/archive/master.zip
 ```sh
  $ cd C:\Users\<your_user_name>\.qgis2\python\plugins
 ``` 
-Open QGIS:
+4) Open QGIS:
 
 Go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
 
@@ -87,7 +87,7 @@ Clone the `GitHub` repository into the earlier mentioned path:
 ```sh
  $  sudo git clone https://github.com/stanly3690/HotSpotAnalysis_Plugin 
 ```
-4) Open QGIS:
+Open QGIS:
 
 Go to `Plugins` -> `Manage and Install plugins` -> `Settings` -> `Show also experimental plugins` 
 

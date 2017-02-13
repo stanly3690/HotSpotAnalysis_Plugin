@@ -18,14 +18,22 @@ These libraries are not included in the QGIS core libraries and must be installe
 ___
 ### Installation - Windows OS
 
+Open `OSGeo4W Shell` as `Administrator` and type:
+```sh
+ $ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+ $ python get-pip.py
+```
+Alternatively:
+
 Download `get-pip.py` , to enable `PIP` functionalities, which is available at this link: <https://bootstrap.pypa.io/get-pip.py> 
 
-Open `OSGeo4W Shell` as `Administrator` and change the working directory where the `get-pip.py` file is stored and type :
+Open `OSGeo4W Shell` as `Administrator` and change the working directory where the `get-pip.py` file is stored and type:
 ```sh
  $ python get-pip.py
 ```
-(Further information regarding `PIP` installation can be found in:
-https://packaging.python.org/en/latest/installing/#install-pip-setuptools-and-wheel)
+Further information regarding `PIP` installation can be found in:
+- https://trac.osgeo.org/osgeo4w/wiki/ExternalPythonPackages 
+- https://packaging.python.org/en/latest/installing/#install-pip-setuptools-and-wheel
 
 Download the following packages according to your Python version and your Operating System characteristics:
  
@@ -33,7 +41,7 @@ Download the following packages according to your Python version and your Operat
 
  `Scipy` : https://pypi.anaconda.org/carlkl/simple/scipy/ 
  
-**Note**: for example, in the filename "numpy-1.10.0b1-cp34-none-win_amd64.whl " cp34, amd64 depicts python 3.4 and 64 bit Operating System
+**Note**: Default Python version for `OSGeo4W Shell` is 2.7, select the correct packages accordling to your Operating System, for example: the filename "numpy-1.10.0b1-cp27-none-win_amd64.whl" cp27, amd64 depicts python 2.7 and 64 bit Operating System
 
 Change the directory to where the downloaded packages are stored and type the following commands:
 

@@ -23,7 +23,7 @@ Open `OSGeo4W Shell` as `Administrator` and type:
  $ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
  $ python get-pip.py
 ```
-Alternatively:
+####Alternatively:
 
 Download `get-pip.py` , to enable `PIP` functionalities, which is available at this link: <https://bootstrap.pypa.io/get-pip.py> 
 

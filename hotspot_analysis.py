@@ -504,7 +504,7 @@ class HotspotAnalysis:
                         minT = int(self.dlg.lineEdit_minT.text())
                         maxT = int(self.dlg.lineEdit_maxT.text())
                         dist = int(self.dlg.lineEdit_dist.text())
-                        for i in range(minT, maxT, dist):
+                        for i in range(minT, maxT + dist, dist):
                             w = DistanceBand(t, threshold=i, p=2, binary=False)
                             moran = pysal.Moran(y, w)
                             # print moran.z_norm
